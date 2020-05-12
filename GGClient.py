@@ -26,27 +26,32 @@ class GGClient(object):
         return content
 
 
-    def search_for_event(self, event_name):
+    def search_for_tournaments(self, tournament_name):
         with open(self.algolia_file, 'r') as f:
             algolia = json.loads(f.read())
 
         client = SearchClient.create(algolia['application-id'], algolia['api-key'])
         index = client.init_index('omnisearch')
-        objects = index.search(event_name)
+        objects = index.search(tournament_name)
 
         if len(objects['hits']) == 0:
-            raise ValueError(f'Event "{event_name}" not found')
+            raise ValueError(f'Tournament "{tournament_name}" not found')
 
-        tournament_id = objects['hits'][0]['profileId']
-        melee_events = self._get_melee_events(tournament_id)
-        return melee_events
+        tournaments = {}
+        for tournament in objects['hits']:
+            id = tournament['profileId']
+            name = tournament['_highlightResult']['name']['value']
+            name = name.replace('<em>', '').replace('</em>', '')
+            tournaments[id] = name
+        return tournaments
 
 
-    def _get_melee_events(self, tournament_id):
+    def get_melee_events(self, tournament_id):
         gql = \
             """
             query tournament($profileId: ID!) {
               tournament(id: $profileId) {
+                name
                 events {
                   id
                   name
@@ -57,14 +62,16 @@ class GGClient(object):
               }
             }
             """
-        events = self._execute_gql(gql, {'profileId': tournament_id})
+        response = self._execute_gql(gql, {'profileId': tournament_id})
         melee_events = {}
-        for event in events['data']['tournament']['events']:
+        for event in response['data']['tournament']['events']:
             if event['videogame']['id'] == GGConstant.melee_type:
                 melee_events[event['id']] = event['name']
 
+
         if not melee_events:
-            raise ValueError(f'Melee event not found for {tournament_id}') from None
+            tournament_name = response['data']['tournament']['name']
+            raise ValueError(f'Melee event not found for {tournament_name}') from None
         return melee_events
 
 
@@ -90,27 +97,16 @@ class GGClient(object):
         return phase_ids
 
 
-    def get_phase_bracket(self, phase_id):
+    def get_phase_groups(self, phase_id):
         gql = \
             """
-            query bracket($phaseId: ID!, $page: Int!, $perPage: Int!) {
+            query phase($phaseId: ID!) {
               phase(id: $phaseId) {
-                name
-                sets(page: $page, perPage: $perPage, sortType: STANDARD) {
-                  pageInfo {
-                    total
-                  }
+                phaseGroups {
                   nodes {
                     id
-                    round
-                    displayScore
-                    winnerId
-                    slots {
-                      entrant {
-                        id
-                        name
-                      }
-                    }
+                    displayIdentifier
+                    bracketType
                   }
                 }
               }
@@ -121,15 +117,68 @@ class GGClient(object):
             'page': 1,
             'perPage': 999,
         }
-        phase = self._execute_gql(gql, variables)['data']['phase']
+        result = self._execute_gql(gql, variables)
+        phase_groups = result['data']['phase']['phaseGroups']['nodes']
+        return phase_groups
 
-        bracket = tournament.Bracket(phase_id, phase['name'])
-        for set in phase['sets']['nodes']:
+
+    def get_phase_group_bracket(self, phase_group_id):
+        gql = \
+            """
+            query bracket($phaseGroupId: ID!, $page: Int!, $perPage: Int!) {
+              phaseGroup(id: $phaseGroupId) {
+                bracketType
+                phase {
+                  name
+                }
+                sets(page: $page, perPage: $perPage, sortType: STANDARD) {
+                  pageInfo {
+                    total
+                  }
+                  nodes {
+                    id
+                    round
+                    displayScore
+                    winnerId
+                    wPlacement
+                    slots {
+                      entrant {
+                        id
+                        name
+                      }
+                      standing {
+                        stats {
+                          score {
+                            value
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            """
+        variables = {
+            'phaseGroupId': phase_group_id,
+            'page': 1,
+            'perPage': 999,
+        }
+        phase_group = self._execute_gql(gql, variables)['data']['phaseGroup']
+
+        if phase_group['sets']['pageInfo']['total'] == 0:
+            raise ValueError(f'Bracket for "{phase_group["phase"]["name"]}" not started')
+
+        bracket_name = phase_group['phase']['name']
+        bracket_type = phase_group['bracketType']
+        bracket = tournament.Bracket(phase_group_id, bracket_name, bracket_type)
+
+        for set in phase_group['sets']['nodes']:
             id = set['id']
             round = set['round']
-            score = set['displayScore']
+            display_score = set['displayScore']
             winner_id = set['winnerId']
-            entrants = {e['entrant']['id']: e['entrant']['name'] for e in set['slots']}
-            bracket.add_set(id, phase_id, round, score, winner_id, entrants)
+            is_grand_final = set['wPlacement'] == 1
+            bracket.add_set(id, phase_group_id, round, display_score, winner_id, is_grand_final, set['slots'])
 
         return bracket

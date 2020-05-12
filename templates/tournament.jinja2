@@ -1,0 +1,4 @@
+{% for tournament in tournaments %}
+  <a href="{{ url_path }}/{{ tournament }}">{{ tournaments[tournament] }}</a></br>
+{% endfor %}
+{% include 'back.html' %}

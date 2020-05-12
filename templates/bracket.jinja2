@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="/static/bracket.css" />
+
+<h1>Upper bracket</h1>
+<main id="tournament">
+  {% for round in bracket.sets|sort %}
+    {% if round > 0 %}
+      <ul class="round round-{{ round }}">
+	<li class="spacer">&nbsp;</li>
+	{% for set in bracket.sets[round] %}
+	  <li class="game game-top {{'winner' if set.upper_entrant.id == set.winner_id}}">
+	    {{ set.upper_entrant.name }}
+	    <span>{{ set.upper_entrant.score }}</span>
+	  </li>
+	  <li class="game game-spacer">&nbsp;</li>
+	  <li class="game game-bottom {{'winner' if set.lower_entrant.id == set.winner_id}}">
+	    {{ set.lower_entrant.name }}
+	    <span>{{ set.lower_entrant.score }}</span>
+	  </li>
+	  <li class="spacer">&nbsp;</li>
+	{% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+</main>
+
+<h1>Lower bracket</h1>
+<main id="tournament">
+  {% for round in bracket.sets|sort(reverse=True) %}
+    {% if round < 1 %}
+      <ul class="round round-{{ round }}">
+	<li class="spacer">&nbsp;</li>
+	{% for set in bracket.sets[round] %}
+	  <li class="game game-top {{'winner' if set.upper_entrant.id == set.winner_id}}">
+	    {{ set.upper_entrant.name }}
+	    <span>{{ set.upper_entrant.score }}</span>
+	  </li>
+	  <li class="game game-spacer">&nbsp;</li>
+	  <li class="game game-bottom {{'winner' if set.lower_entrant.id == set.winner_id}}">
+	    {{ set.lower_entrant.name }}
+	    <span>{{ set.lower_entrant.score }}</span>
+	  </li>
+	  <li class="spacer">&nbsp;</li>
+	{% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+</main>
+
+{% include 'back.html' %}

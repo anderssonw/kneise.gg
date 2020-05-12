@@ -1,15 +1,48 @@
+import json
+import math
 from anytree import Node, RenderTree
 from collections import defaultdict, deque
+from enum import Enum
+
+
+class BracketType(Enum):
+    DOUBLE_ELIMINATION = 0
+    ROUND_ROBIN = 1
+    SINGLE_ELIMINATION = 2
+    SWISS = 3
+    EXHIBITION = 4
+    CUSTOM_SCHEDULE = 5
+    MATCHMAKING = 6
+    ELIMINATION_ROUNDS = 7
+    RACE = 8
+
+
+class Entrant(object):
+    def __init__(self, id, name, score):
+        self.id = id
+        self.name = name
+        self.score = score
 
 
 class Set(object):
-    def __init__(self, id, phase, round, score, winner_id, entrants):
+    def __init__(self, id, phase, round, display_score, winner_id, is_grand_final, slots):
         self.id = id
         self.phase = phase
         self.round = round
-        self.score = score
+        self.display_score = display_score
         self.winner_id = winner_id
-        self.entrants = entrants
+        self.is_grand_final = is_grand_final
+
+        self.entrants = {}
+        for i, slot in enumerate(slots):
+            id = slot['entrant']['id']
+            name = slot['entrant']['name']
+            score = slot['standing']['stats']['score']['value']
+            self.entrants[id] = Entrant(id, name, score)
+
+        entrants = list(self.entrants.values())
+        self.upper_entrant = entrants[0]
+        self.lower_entrant = entrants[1]
 
         self._parent = None
         self._children = {}
@@ -17,7 +50,7 @@ class Set(object):
 
 
     def __str__(self):
-        return f'Set ended: {self.score}'
+        return f'Set ended: {self.display_score}'
 
 
     def _add_parent(self, set):
@@ -43,9 +76,10 @@ class Set(object):
 
 
 class Bracket(object):
-    def __init__(self, id, name=''):
+    def __init__(self, id, name='', type=None):
         self.id = id
         self.name = name
+        self.type = BracketType[type]
         self.sets = defaultdict(list)
         self.upper_bracket = None
         self.lower_bracket = None
@@ -58,7 +92,7 @@ class Bracket(object):
                 continue
             repr += f'  Round {round}\n'
             for set in self.sets[round]:
-                repr += f'  \tSet ended: {set.score}\n'
+                repr += f'  \tSet ended: {set.display_score}\n'
         return repr[:-1]
 
 
@@ -73,9 +107,18 @@ class Bracket(object):
 
 
     @property
+    def ub_rounds(self):
+        return [round for round in self.sets.keys() if round > 0]
+
+
+    @property
+    def lb_rounds(self):
+        return [round for round in self.sets.keys() if round < 0]
+
+
+    @property
     def grand_final(self):
-        with_reset_index = len(self.sets[self.last_round])-1
-        return self.sets[self.last_round][with_reset_index]
+        return self.sets[self.last_round][0]
 
 
     @property
@@ -83,23 +126,36 @@ class Bracket(object):
         return self.sets[min(self.sets.keys())+1][0]
 
 
-    def add_set(self, id, phase, round, score, winner_id, entrants):
-        set = Set(id, phase, round, score, winner_id, entrants)
+    def add_set(self, id, phase, round, display_score, winner_id, is_grand_final, slots):
+        set = Set(id, phase, round, display_score, winner_id, is_grand_final, slots)
         self.sets[round].append(set)
 
 
     def _connect_sets(self):
+        # (TODO): For now we just delete unbalanced rounds, as they harder to
+        # draw, and usually contain less interesting matches.
+        first_ub, first_lb = min(self.ub_rounds), max(self.lb_rounds)
+        for round in self.sets.copy():
+            if round in [first_ub, first_lb]:
+                sets_in_round = len(self.sets[round])
+                if not math.log2(sets_in_round).is_integer() or sets_in_round == 1:
+                    del self.sets[round]
+
         rounds = self.sets.keys()
-        ub_rounds = [round for round in rounds if round > 0]
-        lb_rounds = [round for round in rounds if round < 0]
+        ub_rounds = self.ub_rounds
+        lb_rounds = self.lb_rounds
 
         for round in ub_rounds:
             if round == self.last_round:
                 gf_sets = self.sets[round]
-                if len(gf_sets) > 1:
+                if gf_sets[0].is_grand_final and len(gf_sets) > 1:
                     gf_sets[0]._add_parent(gf_sets[1])
                     gf_sets[1]._add_child(gf_sets[0].id, gf_sets[0])
-                continue
+
+                    self.sets[round] = [gf_sets[0]]
+                    self.sets[round+1].append(gf_sets[1])
+                else:
+                    continue
 
             for set in self.sets[round]:
                 set.connect(self.sets[round+1])
@@ -110,8 +166,10 @@ class Bracket(object):
 
 
     def finalize_bracket_tree(self):
-        self._connect_sets()
+        if self.type != BracketType.DOUBLE_ELIMINATION:
+            raise ValueError(f'Invalid bracket type {self.type}')
 
+        self._connect_sets()
         sets = deque()
         sets.append(self.grand_final)
         sets.append(self.losers_final)
@@ -125,10 +183,29 @@ class Bracket(object):
         self.lower_bracket = self.losers_final.node
 
 
-    def render_bracket(self):
-        print('UPPER BRACKET')
+    def render_bracket_raw(self):
+        repr = ''
+        repr += 'UPPER BRACKET\n'
         for pre, _, node in RenderTree(self.upper_bracket):
-            print(f'{pre, str(node.name)}')
-        print('LOWER BRACKET')
+            repr += f'{pre, str(node.name)}\n'
+        repr += 'LOWER BRACKET'
         for pre, _, node in RenderTree(self.lower_bracket):
-            print(f'{pre, str(node.name)}')
+            repr += f'{pre, str(node.name)}\n'
+        return repr[:-1]
+
+
+    def render_bracket(self):
+        print(self.render_bracket_raw())
+
+
+    def render_pool(self):
+        raise NotImplementedError(f'Render not implemented for {self.type}')
+
+
+    def render(self):
+        if self.type == BracketType.DOUBLE_ELIMINATION:
+            self.render_bracket()
+        elif self.type == BracketType.ROUND_ROBIN:
+            self.render_pool()
+        else:
+            raise NotImplementedError(f'Render not implemented for {self.type}')

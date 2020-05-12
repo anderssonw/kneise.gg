@@ -1,0 +1,4 @@
+{% for phase_group in phase_groups %}
+  <a href="{{ url_path }}/{{ phase_group['id'] }}">{{ phase_group['displayIdentifier'] }}</a></br>
+{% endfor %}
+{% include 'back.html' %}
