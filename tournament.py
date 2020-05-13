@@ -174,18 +174,22 @@ class Bracket(object):
         return self._reorder_rounds(first_round, last_round)
 
 
-    def reorder_sets(self):
+    def _reorder_sets(self):
         ub = self._reorder_ub()
         lb = self._reorder_lb()
         self.sets = {**ub, **lb}
 
 
-    def _connect_sets(self):
+    def _remove_unbalanced_rounds(self):
         # (TODO): For now we just delete unbalanced rounds, as they harder to
         # draw, and usually contain less interesting matches.
         first_ub, first_lb = min(self.ub_rounds), max(self.lb_rounds)
         for round in self.sets.copy():
             if round in [first_ub, first_lb]:
+                if (round == first_ub and len(self.ub_rounds) == 1) or \
+                   (round == first_lb and len(self.lb_rounds) == 1):
+                    continue
+
                 inc = -1 if round < 0 else 1
                 sets_in_round = len(self.sets[round])
                 sets_in_next_round = len(self.sets[round+inc])
@@ -196,7 +200,10 @@ class Bracket(object):
                 if not math.log2(sets_in_round).is_integer() or sets_in_round == 1:
                     del self.sets[round]
 
-        rounds = self.sets.keys()
+
+    def _connect_sets(self):
+        self._remove_unbalanced_rounds()
+
         ub_rounds = self.ub_rounds
         lb_rounds = self.lb_rounds
 
@@ -222,7 +229,7 @@ class Bracket(object):
             for set in self.sets[round]:
                 set.connect(self.sets[round-1])
 
-        self.reorder_sets()
+        self._reorder_sets()
 
 
     def finalize_bracket_tree(self):
