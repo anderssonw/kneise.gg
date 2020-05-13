@@ -123,7 +123,7 @@ class Bracket(object):
 
     @property
     def losers_final(self):
-        return self.sets[min(self.sets.keys())+1][0]
+        return self.sets[min(self.sets.keys())][0]
 
 
     def add_set(self, id, phase, round, display_score, winner_id, is_grand_final, slots):
@@ -186,7 +186,13 @@ class Bracket(object):
         first_ub, first_lb = min(self.ub_rounds), max(self.lb_rounds)
         for round in self.sets.copy():
             if round in [first_ub, first_lb]:
+                inc = -1 if round < 0 else 1
                 sets_in_round = len(self.sets[round])
+                sets_in_next_round = len(self.sets[round+inc])
+
+                if sets_in_round == sets_in_next_round:
+                    continue
+
                 if not math.log2(sets_in_round).is_integer() or sets_in_round == 1:
                     del self.sets[round]
 
