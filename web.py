@@ -4,6 +4,7 @@ from flask import Flask, render_template, redirect, request, jsonify
 
 
 app = Flask(__name__)
+app.logger.setLevel(logging.INFO)
 
 
 @app.errorhandler(ValueError)
