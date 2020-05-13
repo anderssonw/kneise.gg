@@ -35,10 +35,24 @@ class Set(object):
 
         self.entrants = {}
         for i, slot in enumerate(slots):
-            id = slot['entrant']['id']
-            name = slot['entrant']['name']
-            score = slot['standing']['stats']['score']['value']
+            # When there is no entrant yet, we are waiting for an entrant from
+            # the match below, so create an empty one.
+            try:
+                id = slot['entrant']['id']
+                name = slot['entrant']['name']
+            except TypeError:
+                id = i
+                name = 'TBD'
+
+            # In cases where we have an entrant, but no score, the set is not
+            # yet started.
+            try:
+                score = slot['standing']['stats']['score']['value']
+            except TypeError:
+                score = '-'
+
             self.entrants[id] = Entrant(id, name, score)
+            print(self.entrants[id])
 
         entrants = list(self.entrants.values())
         self.upper_entrant = entrants[0]
