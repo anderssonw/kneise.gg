@@ -108,12 +108,12 @@ class Bracket(object):
 
     @property
     def ub_rounds(self):
-        return [round for round in self.sets.keys() if round > 0]
+        return sorted([round for round in self.sets.keys() if round > 0])
 
 
     @property
     def lb_rounds(self):
-        return [round for round in self.sets.keys() if round < 0]
+        return list(reversed(sorted([round for round in self.sets.keys() if round < 0])))
 
 
     @property
@@ -129,6 +129,41 @@ class Bracket(object):
     def add_set(self, id, phase, round, display_score, winner_id, is_grand_final, slots):
         set = Set(id, phase, round, display_score, winner_id, is_grand_final, slots)
         self.sets[round].append(set)
+
+
+    def _reorder_rounds(self, first_round, last_round):
+        is_upper_bracket = first_round > 0
+        new_bracket = defaultdict(list)
+        new_bracket[first_round] = self.sets[first_round]
+
+        inc = 1 if is_upper_bracket else -1
+        for round in range(first_round, last_round, inc):
+            if len(self.sets[round]) == len(self.sets[round+inc]):
+                set_range = range(0, len(self.sets[round]))
+            else:
+                set_range = range(0, len(self.sets[round]), 2)
+            for set in set_range:
+                new_bracket[round+inc].append(new_bracket[round][set]._parent)
+
+        return new_bracket
+
+
+    def _reorder_ub(self):
+        first_round = min(self.ub_rounds)
+        last_round = max(self.ub_rounds)
+        return self._reorder_rounds(first_round, last_round)
+
+
+    def _reorder_lb(self):
+        first_round = max(self.lb_rounds)
+        last_round = min(self.lb_rounds)
+        return self._reorder_rounds(first_round, last_round)
+
+
+    def reorder_sets(self):
+        ub = self._reorder_ub()
+        lb = self._reorder_lb()
+        self.sets = {**ub, **lb}
 
 
     def _connect_sets(self):
@@ -161,8 +196,13 @@ class Bracket(object):
                 set.connect(self.sets[round+1])
 
         for round in lb_rounds:
+            if round == min(lb_rounds):
+                continue
+
             for set in self.sets[round]:
                 set.connect(self.sets[round-1])
+
+        self.reorder_sets()
 
 
     def finalize_bracket_tree(self):
