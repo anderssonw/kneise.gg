@@ -9,8 +9,9 @@ class GGConstant(object):
 
 
 class GGClient(object):
-    def __init__(self, api_endpoint='https://smash.gg/api/-/gql'):
+    def __init__(self, api_endpoint='https://smash.gg/api/-/gql', logger=None):
         self.api_endpoint = api_endpoint
+        self.logger = logger
         self.gql_client = GraphQLClient(self.api_endpoint)
         self.algolia_file = 'algolia.json'
         self.user_agent = 'Mozilla/5.0'
@@ -20,9 +21,18 @@ class GGClient(object):
         }
 
 
+    def log_gql_execution(self, gql):
+        if self.logger is None:
+            return
+
+        log_str = gql.strip().partition('\n')[0]
+        self.logger.info(f'Executed gql: {log_str}')
+
+
     def _execute_gql(self, gql, variables):
         result = self.gql_client.execute(gql, variables=variables, headers=self.headers)
         content = json.loads(result)
+        self.log_gql_execution(gql)
         return content
 
 

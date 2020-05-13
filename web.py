@@ -1,3 +1,4 @@
+import logging
 from GGClient import GGClient
 from flask import Flask, render_template, redirect, request, jsonify
 
@@ -18,18 +19,17 @@ def search():
 
 @app.route('/bracket/search/<string:search>')
 def choose_tournament(search):
-    client = GGClient()
+    client = GGClient(logger=app.logger)
     tournaments = client.search_for_tournaments(search)
     if len(tournaments) == 1:
         tournament_id = list(tournaments.keys())[0]
         return redirect(f'/bracket/{tournament_id}')
-    print(tournaments)
     return render_template('tournament.jinja2', url_path='/bracket', tournaments=tournaments)
 
 
 @app.route('/bracket/<int:tournament_id>')
 def choose_event(tournament_id):
-    client = GGClient()
+    client = GGClient(logger=app.logger)
     events = client.get_melee_events(tournament_id)
     if len(events) == 1:
         event_id = list(events.keys())[0]
@@ -39,7 +39,7 @@ def choose_event(tournament_id):
 
 @app.route('/bracket/<int:tournament_id>/<int:event_id>')
 def choose_phase(tournament_id, event_id):
-    client = GGClient()
+    client = GGClient(logger=app.logger)
     phases = client.get_event_phases(event_id)
     if len(phases) == 1:
         phase_id = list(phases.keys())[0]
@@ -49,7 +49,7 @@ def choose_phase(tournament_id, event_id):
 
 @app.route('/bracket/<int:tournament_id>/<int:event_id>/<int:phase_id>')
 def choose_phase_group(tournament_id, event_id, phase_id):
-    client = GGClient()
+    client = GGClient(logger=app.logger)
     phase_groups = client.get_phase_groups(phase_id)
     if len(phase_groups) == 1:
         phase_group_id = phase_groups[0]['id']
@@ -59,7 +59,7 @@ def choose_phase_group(tournament_id, event_id, phase_id):
 
 @app.route('/bracket/<int:tournament_id>/<int:event_id>/<int:phase_id>/<int:phase_group_id>')
 def render_bracket(tournament_id, event_id, phase_id, phase_group_id):
-    client = GGClient()
+    client = GGClient(logger=app.logger)
     bracket = client.get_phase_group_bracket(phase_group_id)
     bracket.finalize_bracket_tree()
     return render_template('bracket.jinja2', bracket=bracket)
