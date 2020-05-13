@@ -138,12 +138,26 @@ class Bracket(object):
 
         inc = 1 if is_upper_bracket else -1
         for round in range(first_round, last_round, inc):
-            if len(self.sets[round]) == len(self.sets[round+inc]):
+            halved_next_round = len(self.sets[round]) == len(self.sets[round+inc])
+            if halved_next_round:
                 set_range = range(0, len(self.sets[round]))
             else:
                 set_range = range(0, len(self.sets[round]), 2)
             for set in set_range:
                 new_bracket[round+inc].append(new_bracket[round][set]._parent)
+
+            # If this is the first round, we must ensure that we also move
+            # second child of the sets in the next round to their correct
+            # position. This is done automatically for all other rounds.
+            if round == first_round and not halved_next_round:
+                new_round = new_bracket[first_round][:]
+                for set_index in range(1, len(self.sets[round]), 2):
+                    set = new_bracket[round][set_index]
+                    parent_index = new_bracket[round+inc].index(set._parent)
+                    new_round[parent_index*2+1] = set
+                new_bracket[round] = new_round
+
+            # (TODO): Ensure upper entrant is winner of upper last round etc.
 
         return new_bracket
 
