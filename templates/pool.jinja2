@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="/static/pool.css" />
+
+<table id="pool">
+  <tr>
+    <td></td>
+    {% for entrant in bracket.pool_entrants %}
+      <td class="entrant">{{ entrant }}</td> 
+    {% endfor %}
+  </tr>
+
+  {% for row in bracket.pool_sets %}
+    <tr>
+      {% if loop.index > 0 %}
+	<td class="entrant">
+	  {{ bracket.pool_entrants[loop.index-1] }}
+	</td>
+      {% endif %}
+
+      {% for col in row %}
+	<td class="{{'win' if col.is_win else 'loss'}} {{ 'diag' if col == 0 }}">
+	  {% if col.dq %}
+	    DQ
+	  {% else %}
+	    {{ col.left_score }} - {{ col.right_score }}
+	  {% endif %}
+	</td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>

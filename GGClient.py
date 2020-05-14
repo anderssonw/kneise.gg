@@ -159,6 +159,9 @@ class GGClient(object):
                       entrant {
                         id
                         name
+                        seeds {
+                          seedNum
+                        }
                       }
                       standing {
                         stats {

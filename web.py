@@ -1,6 +1,7 @@
 import logging
 from GGClient import GGClient
 from flask import Flask, render_template, redirect, request, jsonify
+from tournament import BracketType
 
 
 app = Flask(__name__)
@@ -62,5 +63,9 @@ def choose_phase_group(tournament_id, event_id, phase_id):
 def render_bracket(tournament_id, event_id, phase_id, phase_group_id):
     client = GGClient(logger=app.logger)
     bracket = client.get_phase_group_bracket(phase_group_id)
-    bracket.finalize_bracket_tree()
-    return render_template('bracket.jinja2', bracket=bracket)
+    bracket.finalize()
+
+    if bracket.type in [BracketType.DOUBLE_ELIMINATION, BracketType.SINGLE_ELIMINATION]:
+        return render_template('bracket.jinja2', bracket=bracket)
+    elif bracket.type == BracketType.ROUND_ROBIN:
+        return render_template('pool.jinja2', bracket=bracket)

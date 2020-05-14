@@ -1,0 +1,42 @@
+body {
+    font-family: sans-serif;
+}
+
+table {
+    border-collaps: separate;
+    border-spacing: 6px;
+}
+
+td {
+    height: 45px;
+    max-height: 45px;
+    width: 120px;
+    max-width: 120px;
+
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.entrant {
+    font-weight: bold;
+}
+
+.win {
+    border: 2px solid black;
+    color: #22b24c;
+    border-color: #83e9a1;
+}
+
+.loss {
+    border: 2px solid black;
+    color: #d0021b;
+    border-color: #ea7986;
+}
+
+.diag {
+    border-color: #e6e6e6 !important;
+    background-color: #e6e6e6;
+    text-indent: -9999px;
+}

@@ -24,12 +24,18 @@ class Prereq(object):
 
 
 class Slot(object):
-    def __init__(self, entrant_id, entrant_name, entrant_score, prereq, index):
-        self.entrant_id = entrant_id
-        self.entrant_name = entrant_name
-        self.entrant_score = entrant_score
+    def __init__(self, entrant, prereq, index):
+        self.entrant = entrant
         self.prereq = prereq
         self.index = index
+
+
+class Entrant(object):
+    def __init__(self, id, name, score, seed):
+        self.id = id
+        self.name = name
+        self.score = score
+        self.seed = seed
 
 
 class Set(object):
@@ -43,15 +49,19 @@ class Set(object):
         self.is_gf = is_gf
 
         self.slots = []
+        self.entrants = []
         for i, slot in enumerate(slots):
             # If there is no entrant in a slot, the entrant is not yet decided
             # (pools, previous set or similar).
             try:
                 entrant_id = slot['entrant']['id']
                 entrant_name = slot['entrant']['name']
+                entrant_seeds = slot['entrant']['seeds']
+                entrant_seed = min([seed['seedNum'] for seed in entrant_seeds])
             except TypeError:
                 entrant_id = i
                 entrant_name = ''
+                entrant_seed = 0
 
             # If we have an entrant, they may have no updated score yet, making
             # their score 0. If no entrant, then the set hasn't begun.
@@ -65,7 +75,17 @@ class Set(object):
             prereq = Prereq(prereq_id, prereq_type)
             index = slot['slotIndex']
 
-            self.slots.append(Slot(entrant_id, entrant_name, entrant_score, prereq, index))
+            entrant = Entrant(entrant_id, entrant_name, entrant_score, entrant_seed)
+            self.slots.append(Slot(entrant, prereq, index))
+
+            # For creating pools later, where we can do a lookup to determine
+            # the order of the scoring. Not optimal.
+            if entrant_id == self.winner_id:
+                self.winner_seed = entrant_seed
+                self.winner_score = entrant_score
+            else:
+                self.loser_seed = entrant_seed
+                self.loser_score = entrant_score
         self.slots.sort(key=lambda s: s.index)
 
         self.upper_slot = self.slots[0]
@@ -95,6 +115,14 @@ class Set(object):
                 break
 
 
+class PoolResult(object):
+    def __init__(self, left_score, right_score):
+        self.left_score = left_score
+        self.right_score = right_score
+        self.is_win = left_score > right_score
+        self.dq = self.left_score == -1 or self.right_score == -1
+
+
 class Bracket(object):
     def __init__(self, id, name='', type=None):
         self.id = id
@@ -102,8 +130,7 @@ class Bracket(object):
         self.type = BracketType[type]
         self.rounds = {}
         self.sets = {}
-        self.upper_bracket = None
-        self.lower_bracket = None
+        self.entrants = {}
 
 
     def get_rounds(self):
@@ -132,12 +159,21 @@ class Bracket(object):
 
     def add_set(self, id, phase, round, display_score, winner_id, identifier, is_gf, slots):
         set = Set(id, phase, round, display_score, winner_id, identifier, is_gf, slots)
+
+        # Add to smorgasbord for all sets.
         self.sets[set.id] = set
+
+        # Add to correct round.
         try:
             self.rounds[round].append(set)
         except KeyError:
             self.rounds[round] = []
             self.rounds[round].append(set)
+
+        # Add entrants of the set.
+        for slot in set.slots:
+            if slot.entrant.id not in self.entrants:
+                self.entrants[slot.entrant.id] = slot.entrant
 
 
     def __remove_unbalanced_rounds(self, rounds):
@@ -160,7 +196,7 @@ class Bracket(object):
         self.__remove_unbalanced_rounds(self.lb_rounds)
 
 
-    def _connect_sets(self):
+    def _connect_bracket_sets(self):
         # Sort each round by set identifier to replicate smash.gg exactly. First
         # sorts by length, and then alphabetically, e.g. X -> Y -> Z -> AA.
         def set_sort_key(set):
@@ -190,12 +226,34 @@ class Bracket(object):
                     child_set._add_parent(self)
 
 
-    def finalize_bracket_tree(self):
+    def _finalize_pools(self):
+        def entrant_sort_key(entrant):
+            return entrant.seed, entrant.name
+        pool_entrants = list(self.entrants.values())
+        pool_entrants.sort(key=entrant_sort_key)
+
+        seed_translation = {}
+        for i, entrant in enumerate(pool_entrants):
+            seed_translation[entrant.seed] = i
+
+        self.pool_entrants = [entrant.name for entrant in pool_entrants]
+        self.pool_sets = [[0]*len(pool_entrants) for _ in pool_entrants]
+        for set in self.sets.values():
+            winner_seed = seed_translation[set.winner_seed]
+            loser_seed = seed_translation[set.loser_seed]
+            self.pool_sets[winner_seed][loser_seed] = PoolResult(set.winner_score, set.loser_score)
+            self.pool_sets[loser_seed][winner_seed] = PoolResult(set.loser_score, set.winner_score)
+
+
+    def finalize(self):
         if self.type == BracketType.DOUBLE_ELIMINATION:
-            self._connect_sets()
+            self._connect_bracket_sets()
             return
         elif self.type == BracketType.SINGLE_ELIMINATION:
-            self._connect_sets()
+            self._connect_bracket_sets()
+            return
+        elif self.type == BracketType.ROUND_ROBIN:
+            self._finalize_pools()
             return
         else:
             raise ValueError(f'Invalid bracket type {self.type}')
