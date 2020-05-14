@@ -44,9 +44,21 @@ class Set(object):
 
         self.slots = []
         for i, slot in enumerate(slots):
-            entrant_id = slot['entrant']['id']
-            entrant_name = slot['entrant']['name']
-            entrant_score = slot['standing']['stats']['score']['value']
+            # If there is no entrant in a slot, the entrant is not yet decided
+            # (pools, previous set or similar).
+            try:
+                entrant_id = slot['entrant']['id']
+                entrant_name = slot['entrant']['name']
+            except TypeError:
+                entrant_id = i
+                entrant_name = 'TBD'
+
+            # If we have an entrant, they may have no updated score yet, making
+            # their score 0. If no entrant, then the set hasn't begun.
+            try:
+                entrant_score = slot['standing']['stats']['score']['value'] or 0
+            except TypeError:
+                entrant_score = '-'
 
             prereq_id = int(slot['prereqId'])
             prereq_type = slot['prereqType']
