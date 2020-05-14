@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/static/bracket.css" />
-
-<h1>Upper bracket</h1>
+<h1>{{bracket.tournament_name}}</h1>
+</br>
+<h2>Upper bracket</h2>
 <main id="tournament">
   {% for round in bracket.rounds.keys()|sort %}
     {% if round > 0 %}
@@ -23,7 +24,7 @@
   {% endfor %}
 </main>
 
-<h1>Lower bracket</h1>
+<h2>Lower bracket</h2>
 <main id="tournament">
   {% for round in bracket.rounds.keys()|sort(reverse=True) %}
     {% if round < 1 %}

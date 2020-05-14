@@ -55,7 +55,6 @@ class GGClient(object):
             tournaments[id] = name
         return tournaments
 
-
     def get_melee_events(self, tournament_id):
         gql = \
             """
@@ -139,10 +138,10 @@ class GGClient(object):
         return phase_groups
 
 
-    def get_phase_group_bracket(self, phase_group_id):
+    def get_phase_group_bracket(self, phase_group_id, tournament_id):
         gql = \
             """
-            query bracket($phaseGroupId: ID!, $page: Int!, $perPage: Int!) {
+            query bracket($phaseGroupId: ID!, $page: Int!, $perPage: Int!, $profileId: ID!) {
               phaseGroup(id: $phaseGroupId) {
                 bracketType
                 phase {
@@ -187,21 +186,27 @@ class GGClient(object):
                   }
                 }
               }
+              tournament(id: $profileId) {
+                name
+              }
             }
             """
         variables = {
             'phaseGroupId': phase_group_id,
             'page': 1,
             'perPage': 999,
+            'profileId': tournament_id
         }
-        phase_group = self._execute_gql(gql, variables)['data']['phaseGroup']
+        result = self._execute_gql(gql, variables)
+        phase_group = result['data']['phaseGroup']
 
         if phase_group['sets']['pageInfo']['total'] == 0:
             raise ValueError(f'Bracket for "{phase_group["phase"]["name"]}" not started')
 
         bracket_name = phase_group['phase']['name']
         bracket_type = phase_group['bracketType']
-        bracket = tournament.Bracket(phase_group_id, bracket_name, bracket_type)
+        tournament_name = result['data']['tournament']['name']
+        bracket = tournament.Bracket(phase_group_id, bracket_name, bracket_type, tournament_name)
 
         for set in phase_group['sets']['nodes']:
             set_params = {

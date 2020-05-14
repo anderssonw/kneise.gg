@@ -129,10 +129,11 @@ class PoolResult(object):
 
 
 class Bracket(object):
-    def __init__(self, id, name='', type=None):
+    def __init__(self, id, name='', type=None, tournament_name=''):
         self.id = id
         self.name = name
         self.type = BracketType[type]
+        self.tournament_name = tournament_name
         self.rounds = {}
         self.sets = {}
         self.entrants = {}

@@ -1,6 +1,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<h2>Results for search: {{search}}</h2>
 {% for tournament in tournaments %}
   <a href="{{ url_path }}/{{ tournament }}">{{ tournaments[tournament] }}</a></br>
 {% endfor %}
-{% include 'back.html' %}
+</br>
+<h3>Couldn't find your tournament?</h3>
+{% include 'search.jinja2' %}
+
