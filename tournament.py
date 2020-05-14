@@ -144,21 +144,21 @@ class Bracket(object):
         # (TODO): For now we just delete unbalanced rounds, as they harder to
         # draw, and usually contain less interesting matches.
         first_ub, first_lb = min(self.ub_rounds), max(self.lb_rounds)
-        for round in self.sets.copy():
+        for round in self.rounds.copy():
             if round in [first_ub, first_lb]:
                 if (round == first_ub and len(self.ub_rounds) == 1) or \
                    (round == first_lb and len(self.lb_rounds) == 1):
                     continue
 
                 inc = -1 if round < 0 else 1
-                sets_in_round = len(self.sets[round])
-                sets_in_next_round = len(self.sets[round+inc])
+                sets_in_round = len(self.rounds[round])
+                sets_in_next_round = len(self.rounds[round+inc])
 
                 if sets_in_round == sets_in_next_round:
                     continue
 
                 if not math.log2(sets_in_round).is_integer() or sets_in_round == 1:
-                    del self.sets[round]
+                    del self.rounds[round]
 
 
     def _connect_sets(self):
