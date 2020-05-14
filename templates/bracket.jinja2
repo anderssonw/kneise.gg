@@ -7,14 +7,14 @@
       <ul class="round round-{{ round }}">
 	<li class="spacer">&nbsp;</li>
 	{% for set in bracket.rounds[round] %}
-	  <li class="game game-top {{'winner' if set.upper_slot.entrant_id == set.winner_id}}">
-	    {{ set.upper_slot.entrant_name }}
-	    <span>{{ set.upper_slot.entrant_score }}</span>
+	  <li class="game game-top {{'winner' if set.upper_slot.entrant.id == set.winner_id}}">
+	    {{ set.upper_slot.entrant.name }}
+	    <span>{{ set.upper_slot.entrant.score }}</span>
 	  </li>
 	  <li class="game game-spacer">&nbsp;</li>
 	  <li class="game game-bottom {{'winner' if set.lower_slot.entrant_id == set.winner_id}}">
-	    {{ set.lower_slot.entrant_name }}
-	    <span>{{ set.lower_slot.entrant_score }}</span>
+	    {{ set.lower_slot.entrant.name }}
+	    <span>{{ set.lower_slot.entrant.score }}</span>
 	  </li>
 	  <li class="spacer">&nbsp;</li>
 	{% endfor %}
@@ -30,14 +30,14 @@
       <ul class="round round-{{ round }}">
 	<li class="spacer">&nbsp;</li>
 	{% for set in bracket.rounds[round] %}
-	  <li class="game game-top {{'winner' if set.upper_slot.entrant_id == set.winner_id}}">
-	    {{ set.upper_slot.entrant_name }}
-	    <span>{{ set.upper_slot.entrant_score }}</span>
+	  <li class="game game-top {{'winner' if set.upper_slot.entrant.id == set.winner_id}}">
+	    {{ set.upper_slot.entrant.name }}
+	    <span>{{ set.upper_slot.entrant.score }}</span>
 	  </li>
 	  <li class="game game-spacer">&nbsp;</li>
-	  <li class="game game-bottom {{'winner' if set.lower_slot.entrant_id == set.winner_id}}">
-	    {{ set.lower_slot.entrant_name }}
-	    <span>{{ set.lower_slot.entrant_score }}</span>
+	  <li class="game game-bottom {{'winner' if set.lower_slot.entrant.id == set.winner_id}}">
+	    {{ set.lower_slot.entrant.name }}
+	    <span>{{ set.lower_slot.entrant.score }}</span>
 	  </li>
 	  <li class="spacer">&nbsp;</li>
 	{% endfor %}
