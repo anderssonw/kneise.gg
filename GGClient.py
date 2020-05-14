@@ -227,7 +227,7 @@ class GGClient(object):
                 id
                 gamerTag
                 otherTournamentsCount
-                otherTournaments {
+                otherTournaments(limit: 100) {
                   id
                   name
                 }
