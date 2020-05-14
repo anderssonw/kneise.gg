@@ -229,6 +229,20 @@ class Bracket(object):
 
 
     def _finalize_pools(self):
+        # (TODO): Dont duplicate entrants, this is a suspicious approach.
+        # If anyone has the same seed, replace one with an increment of
+        # 0.5.
+        seeds = {}
+        for set in self.sets.values():
+            for slot in set.slots:
+                entrant = slot.entrant
+                if entrant.id in seeds:
+                    entrant.seed = seeds[entrant.id]
+                else:
+                    if entrant.seed in seeds.values():
+                        entrant.seed += 0.5
+                    seeds[entrant.id] = entrant.seed
+
         def entrant_sort_key(entrant):
             return entrant.seed, entrant.name
         pool_entrants = list(self.entrants.values())
