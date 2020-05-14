@@ -58,7 +58,7 @@ class Set(object):
             try:
                 entrant_score = slot['standing']['stats']['score']['value'] or 0
             except TypeError:
-                entrant_score = ''
+                entrant_score = '-'
 
             prereq_id = int(slot['prereqId'])
             prereq_type = slot['prereqType']
