@@ -150,8 +150,12 @@ class GGClient(object):
                     round
                     displayScore
                     winnerId
+                    identifier
                     wPlacement
                     slots {
+                      prereqId
+                      prereqType
+                      slotIndex
                       entrant {
                         id
                         name
@@ -184,11 +188,16 @@ class GGClient(object):
         bracket = tournament.Bracket(phase_group_id, bracket_name, bracket_type)
 
         for set in phase_group['sets']['nodes']:
-            id = set['id']
-            round = set['round']
-            display_score = set['displayScore']
-            winner_id = set['winnerId']
-            is_grand_final = set['wPlacement'] == 1
-            bracket.add_set(id, phase_group_id, round, display_score, winner_id, is_grand_final, set['slots'])
+            set_params = {
+                'id': set['id'],
+                'phase': phase_group_id,
+                'round': set['round'],
+                'display_score': set['displayScore'],
+                'winner_id': set['winnerId'],
+                'identifier': set['identifier'],
+                'is_gf': set['wPlacement'] == 1,
+                'slots': set['slots'],
+            }
+            bracket.add_set(**set_params)
 
         return bracket
