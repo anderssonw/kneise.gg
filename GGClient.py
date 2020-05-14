@@ -161,6 +161,9 @@ class GGClient(object):
                         name
                         seeds {
                           seedNum
+                          phaseGroup {
+                            id
+                          }
                         }
                       }
                       standing {

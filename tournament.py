@@ -39,9 +39,9 @@ class Entrant(object):
 
 
 class Set(object):
-    def __init__(self, id, phase, round, display_score, winner_id, identifier, is_gf, slots):
+    def __init__(self, id, phase_group_id, round, display_score, winner_id, identifier, is_gf, slots):
         self.id = id
-        self.phase = phase
+        self.phase_group_id = phase_group_id
         self.round = round
         self.display_score = display_score
         self.winner_id = winner_id
@@ -57,7 +57,9 @@ class Set(object):
                 entrant_id = slot['entrant']['id']
                 entrant_name = slot['entrant']['name']
                 entrant_seeds = slot['entrant']['seeds']
-                entrant_seed = min([seed['seedNum'] for seed in entrant_seeds])
+                for seed in entrant_seeds:
+                    if seed['phaseGroup']['id'] == phase_group_id:
+                        entrant_seed = seed['seedNum']
             except TypeError:
                 entrant_id = i
                 entrant_name = ''
@@ -236,13 +238,21 @@ class Bracket(object):
         for i, entrant in enumerate(pool_entrants):
             seed_translation[entrant.seed] = i
 
+        # print([(e.seed, e.name) for e in pool_entrants])
         self.pool_entrants = [entrant.name for entrant in pool_entrants]
-        self.pool_sets = [[0]*len(pool_entrants) for _ in pool_entrants]
+        self.pool_sets = [[0]*len(self.pool_entrants) for _ in self.pool_entrants]
         for set in self.sets.values():
-            winner_seed = seed_translation[set.winner_seed]
-            loser_seed = seed_translation[set.loser_seed]
-            self.pool_sets[winner_seed][loser_seed] = PoolResult(set.winner_score, set.loser_score)
-            self.pool_sets[loser_seed][winner_seed] = PoolResult(set.loser_score, set.winner_score)
+            if set.slots[0].entrant.id == set.winner_id:
+                winner = set.slots[0].entrant
+                loser = set.slots[1].entrant
+            else:
+                winner = set.slots[1].entrant
+                loser = set.slots[0].entrant
+
+            winner_index = seed_translation[winner.seed]
+            loser_index = seed_translation[loser.seed]
+            self.pool_sets[winner_index][loser_index] = PoolResult(winner.score, loser.score)
+            self.pool_sets[loser_index][winner_index] = PoolResult(loser.score, winner.score)
 
 
     def finalize(self):
