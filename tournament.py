@@ -140,25 +140,24 @@ class Bracket(object):
             self.rounds[round].append(set)
 
 
+    def __remove_unbalanced_rounds(self, rounds):
+        if len(rounds) == 1:
+            return
+
+        is_ub = all(r > 0 for r in rounds)
+        first_round = min(rounds) if is_ub else max(rounds)
+        inc = 1 if is_ub else -1
+
+        if len(self.rounds[first_round]) == len(self.rounds[first_round+inc]) or \
+           len(self.rounds[first_round]) == len(self.rounds[first_round+inc])*2:
+            return
+
+        del self.rounds[first_round]
+
+
     def _remove_unbalanced_rounds(self):
-        # (TODO): For now we just delete unbalanced rounds, as they harder to
-        # draw, and usually contain less interesting matches.
-        first_ub, first_lb = min(self.ub_rounds), max(self.lb_rounds)
-        for round in self.rounds.copy():
-            if round in [first_ub, first_lb]:
-                if (round == first_ub and len(self.ub_rounds) == 1) or \
-                   (round == first_lb and len(self.lb_rounds) == 1):
-                    continue
-
-                inc = -1 if round < 0 else 1
-                sets_in_round = len(self.rounds[round])
-                sets_in_next_round = len(self.rounds[round+inc])
-
-                if sets_in_round == sets_in_next_round:
-                    continue
-
-                if not math.log2(sets_in_round).is_integer() or sets_in_round == 1:
-                    del self.rounds[round]
+        self.__remove_unbalanced_rounds(self.ub_rounds)
+        self.__remove_unbalanced_rounds(self.lb_rounds)
 
 
     def _connect_sets(self):
@@ -181,7 +180,8 @@ class Bracket(object):
             self.rounds[gf_round+1].append(gf_sets[1])
 
         # Connect sets to previous sets using the prereq identifier from
-        # smash.gg. Seems to work.
+        # smash.gg. Not used for anything at the moment, but we might need to
+        # know which sets lead to where in the future.
         for set in self.sets.values():
             for slot in set.slots:
                 if slot.prereq == 'set':
