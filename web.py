@@ -17,7 +17,7 @@ def handle_value_error(error):
 
 @app.route('/')
 def search():
-    return render_template('search.html')
+    return render_template('search.jinja2')
 
 
 @app.route('/bracket/search/<string:search>')
