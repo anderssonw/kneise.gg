@@ -117,6 +117,13 @@ class GGClient(object):
                     id
                     displayIdentifier
                     bracketType
+                    seeds(query: {sortBy: "seedNum"}) {
+                      nodes {
+                        entrant {
+                          name
+                        }
+                      }
+                    }
                   }
                 }
               }
