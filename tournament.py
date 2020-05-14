@@ -31,8 +31,9 @@ class Slot(object):
 
 
 class Entrant(object):
-    def __init__(self, id, name, score, seed):
+    def __init__(self, id, participant_id, name, score, seed):
         self.id = id
+        self.participant_id = participant_id
         self.name = name
         self.score = score
         self.seed = seed
@@ -55,6 +56,7 @@ class Set(object):
             # (pools, previous set or similar).
             try:
                 entrant_id = slot['entrant']['id']
+                participant_id = slot['entrant']['participants'][0]['id']
                 entrant_name = slot['entrant']['name']
                 entrant_seeds = slot['entrant']['seeds']
                 for seed in entrant_seeds:
@@ -62,6 +64,7 @@ class Set(object):
                         entrant_seed = seed['seedNum']
             except TypeError:
                 entrant_id = i
+                participant_id = 3817930
                 entrant_name = ''
                 entrant_seed = 0
 
@@ -77,7 +80,7 @@ class Set(object):
             prereq = Prereq(prereq_id, prereq_type)
             index = slot['slotIndex']
 
-            entrant = Entrant(entrant_id, entrant_name, entrant_score, entrant_seed)
+            entrant = Entrant(entrant_id, participant_id, entrant_name, entrant_score, entrant_seed)
             self.slots.append(Slot(entrant, prereq, index))
 
             # For creating pools later, where we can do a lookup to determine

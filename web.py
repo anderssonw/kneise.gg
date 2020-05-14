@@ -69,3 +69,10 @@ def render_bracket(tournament_id, event_id, phase_id, phase_group_id):
         return render_template('bracket.jinja2', bracket=bracket)
     elif bracket.type == BracketType.ROUND_ROBIN:
         return render_template('pool.jinja2', bracket=bracket)
+
+
+@app.route('/user/<int:user_id>')
+def user_tournaments(user_id):
+    client = GGClient(logger=app.logger)
+    user = client.get_user(user_id)
+    return render_template('user.jinja2', user=user)

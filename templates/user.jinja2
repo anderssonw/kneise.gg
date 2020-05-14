@@ -1,0 +1,8 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<h1>Tournaments for {{ user.gamerTag }}</h1>
+{% for tournament in user.otherTournaments %}
+  <a href="/bracket/{{ tournament.id }}">{{ tournament.name }}</a></br>
+{% endfor %}
+
+{% include 'back.html' %}

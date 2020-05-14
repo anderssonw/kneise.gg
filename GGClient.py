@@ -166,6 +166,9 @@ class GGClient(object):
                       entrant {
                         id
                         name
+                        participants {
+                          id
+                        }
                         seeds {
                           seedNum
                           phaseGroup {
@@ -214,3 +217,22 @@ class GGClient(object):
             bracket.add_set(**set_params)
 
         return bracket
+
+
+    def get_user(self, user_id):
+        gql = \
+            """
+            query user_tournaments($id: ID!) {
+              participant(id: $id) {
+                id
+                gamerTag
+                otherTournamentsCount
+                otherTournaments {
+                  id
+                  name
+                }
+              }
+            }
+            """
+        user = self._execute_gql(gql, { 'id': user_id } )['data']['participant']
+        return user
