@@ -141,7 +141,7 @@ class Bracket(object):
 
 
     def __remove_unbalanced_rounds(self, rounds):
-        if len(rounds) == 1:
+        if len(rounds) in [0, 1]:
             return
 
         is_ub = all(r > 0 for r in rounds)
@@ -191,6 +191,11 @@ class Bracket(object):
 
 
     def finalize_bracket_tree(self):
-        if self.type != BracketType.DOUBLE_ELIMINATION:
+        if self.type == BracketType.DOUBLE_ELIMINATION:
+            self._connect_sets()
+            return
+        elif self.type == BracketType.SINGLE_ELIMINATION:
+            self._connect_sets()
+            return
+        else:
             raise ValueError(f'Invalid bracket type {self.type}')
-        self._connect_sets()
