@@ -93,7 +93,8 @@ class GGClient(object):
 
     def search_for_tournaments(self, tournament_name):
         if "smash.gg_tournament" in tournament_name:
-            full_url = self._parse_smashgg_tournament_url(tournament_name)
+            search_url = tournament_name.strip()
+            full_url = self._parse_smashgg_tournament_url(search_url)
             return self._rest_tournament_search(full_url)
         else:
             return self._algolia_search(tournament_name)
