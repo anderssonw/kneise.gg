@@ -1,5 +1,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+{% if phases|length == 0 %}
+  <h3>No phases (e.g. pools, brackets) found. The event probably hasn't started.</h3>
+{% endif %}
+
 {% for phase in phases %}
   <a href="{{ url_path }}/{{ phase }}">{{ phases[phase] }}</a></br>
 {% endfor %}
