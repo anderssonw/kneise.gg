@@ -59,7 +59,7 @@ class Set(object):
             try:
                 entrant_id = slot['entrant']['id']
                 participant_id = slot['entrant']['participants'][0]['id']
-                entrant_name = slot['entrant']['name']
+                entrant_name = slot['entrant']['participants'][0]['gamerTag']
                 entrant_seeds = slot['entrant']['seeds']
                 for seed in entrant_seeds:
                     if seed['phaseGroup']['id'] == phase_group_id:

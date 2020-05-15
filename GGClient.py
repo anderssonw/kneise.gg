@@ -163,7 +163,9 @@ class GGClient(object):
                     seeds(query: {sortBy: "seedNum"}) {
                       nodes {
                         entrant {
-                          name
+                          participants {
+                            gamerTag
+                          }
                         }
                       }
                     }
@@ -209,9 +211,9 @@ class GGClient(object):
                       slotIndex
                       entrant {
                         id
-                        name
                         participants {
                           id
+                          gamerTag
                         }
                         seeds {
                           seedNum
