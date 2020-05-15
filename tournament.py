@@ -265,7 +265,8 @@ class Bracket(object):
         for i, entrant in enumerate(pool_entrants):
             seed_translation[entrant.seed] = i
 
-        self.pool_entrants = [entrant.name for entrant in pool_entrants]
+        self.pool_entrants = [(entrant.name, entrant.participant_id) for entrant in pool_entrants]
+
         self.pool_sets = [[0]*len(self.pool_entrants) for _ in self.pool_entrants]
         for set in self.sets.values():
             if set.slots[0].entrant.id == set.winner_id:

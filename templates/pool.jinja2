@@ -4,16 +4,19 @@
   <tr>
     <td></td>
     {% for entrant in bracket.pool_entrants %}
-      <td class="entrant">{{ entrant }}</td> 
+      <td class="entrant">
+        <a href="/user/{{ entrant[1] }}">{{ entrant[0] }}</a>
+      </td> 
     {% endfor %}
   </tr>
 
   {% for row in bracket.pool_sets %}
     <tr>
       {% if loop.index > 0 %}
-	<td class="entrant">
-	  {{ bracket.pool_entrants[loop.index-1] }}
-	</td>
+        <td class="entrant">
+           <a href="/user/{{ bracket.pool_entrants[loop.index-1][1] }}">{{ bracket.pool_entrants[loop.index-1][0] }}</a>
+
+        </td>
       {% endif %}
 
       {% for col in row %}
