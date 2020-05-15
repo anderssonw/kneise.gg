@@ -77,8 +77,12 @@ class Set(object):
             except TypeError:
                 entrant_score = '-'
 
-            prereq_id = int(slot['prereqId'])
-            prereq_type = slot['prereqType']
+            try:
+                prereq_type = slot['prereqType']
+                prereq_id = int(slot['prereqId'])
+            except ValueError:
+                prereq_type = 'previous_phase'
+                prereq_id = None
             prereq = Prereq(prereq_id, prereq_type)
             index = slot['slotIndex']
 
@@ -261,7 +265,6 @@ class Bracket(object):
         for i, entrant in enumerate(pool_entrants):
             seed_translation[entrant.seed] = i
 
-        # print([(e.seed, e.name) for e in pool_entrants])
         self.pool_entrants = [entrant.name for entrant in pool_entrants]
         self.pool_sets = [[0]*len(self.pool_entrants) for _ in self.pool_entrants]
         for set in self.sets.values():
