@@ -40,7 +40,8 @@ class Entrant(object):
 
 
 class Set(object):
-    def __init__(self, id, phase_group_id, round, display_score, winner_id, identifier, is_gf, slots):
+    def __init__(self, id, phase_group_id, round, display_score, winner_id,
+                 identifier, is_gf, completed, slots):
         self.id = id
         self.phase_group_id = phase_group_id
         self.round = round
@@ -48,6 +49,7 @@ class Set(object):
         self.winner_id = winner_id
         self.identifier = identifier
         self.is_gf = is_gf
+        self.completed = completed
 
         self.slots = []
         self.entrants = []
@@ -121,11 +123,14 @@ class Set(object):
 
 
 class PoolResult(object):
-    def __init__(self, left_score, right_score):
+    def __init__(self, completed, left_score, right_score):
         self.left_score = left_score
         self.right_score = right_score
-        self.is_win = left_score > right_score
         self.dq = self.left_score == -1 or self.right_score == -1
+        if completed:
+            self.status = 'win' if self.left_score > self.right_score else 'loss'
+        else:
+            self.status = 'uncompleted'
 
 
 class Bracket(object):
@@ -163,8 +168,8 @@ class Bracket(object):
         return self.rounds[min(self.get_rounds())][0]
 
 
-    def add_set(self, id, phase, round, display_score, winner_id, identifier, is_gf, slots):
-        set = Set(id, phase, round, display_score, winner_id, identifier, is_gf, slots)
+    def add_set(self, id, phase, round, display_score, winner_id, identifier, is_gf, completed, slots):
+        set = Set(id, phase, round, display_score, winner_id, identifier, is_gf, completed, slots)
 
         # Add to smorgasbord for all sets.
         self.sets[set.id] = set
@@ -269,8 +274,8 @@ class Bracket(object):
 
             winner_index = seed_translation[winner.seed]
             loser_index = seed_translation[loser.seed]
-            self.pool_sets[winner_index][loser_index] = PoolResult(winner.score, loser.score)
-            self.pool_sets[loser_index][winner_index] = PoolResult(loser.score, winner.score)
+            self.pool_sets[winner_index][loser_index] = PoolResult(set.completed, winner.score, loser.score)
+            self.pool_sets[loser_index][winner_index] = PoolResult(set.completed, loser.score, winner.score)
 
 
     def finalize(self):

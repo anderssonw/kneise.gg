@@ -35,6 +35,12 @@ td {
     border-color: #ea7986;
 }
 
+.uncompleted {
+    border: 2px solid grey;
+    color: #999;
+    border-color: #cdcccc;
+}
+
 .diag {
     border-color: #e6e6e6 !important;
     background-color: #e6e6e6;

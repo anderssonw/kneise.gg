@@ -202,6 +202,7 @@ class GGClient(object):
                     winnerId
                     identifier
                     wPlacement
+                    completedAt
                     slots {
                       prereqId
                       prereqType
@@ -261,6 +262,7 @@ class GGClient(object):
                 'winner_id': set['winnerId'],
                 'identifier': set['identifier'],
                 'is_gf': set['wPlacement'] == 1,
+                'completed': set['completedAt'] is not None,
                 'slots': set['slots'],
             }
             bracket.add_set(**set_params)

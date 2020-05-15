@@ -17,7 +17,7 @@
       {% endif %}
 
       {% for col in row %}
-	<td class="{{'win' if col.is_win else 'loss'}} {{ 'diag' if col == 0 }}">
+	<td class="{{ col.status }} {{ 'diag' if col == 0 }}">
 	  {% if col.dq %}
 	    DQ
 	  {% else %}
