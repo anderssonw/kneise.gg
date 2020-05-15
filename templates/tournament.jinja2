@@ -1,9 +1,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <h2>Results for search: {{search}}</h2>
 {% for tournament in tournaments %}
-  <a href="{{ url_path }}/{{ tournament }}">{{ tournaments[tournament] }}</a></br>
+  <a id="{{tournament}}" onclick="return toStorage({{tournament}})" href="{{url_path}}/{{tournament}}">{{ tournaments[tournament] }}</a></br>
 {% endfor %}
 </br>
 <h3>Couldn't find your tournament?</h3>
 {% include 'search.jinja2' %}
 
+<script>
+function toStorage(tournament_id) {
+  let path = '/bracket/'+tournament_id;
+  let timestamp = new Date();
+  timestamp = timestamp.getTime();
+  let tournament_name = document.getElementById(tournament_id).innerHTML
+
+  if(localStorage.getItem('visited_tournaments')) {
+    let visited_tournaments = JSON.parse(localStorage.getItem('visited_tournaments'));
+    
+    let check_for_tournament = visited_tournaments.filter(obj => {
+      return obj.path == path
+    })
+
+    if(!check_for_tournament[0]) {
+      visited_tournaments.push({
+        path: path,
+        timestamp: timestamp,
+        name: tournament_name
+      })
+    }
+
+    localStorage.setItem('visited_tournaments', JSON.stringify(visited_tournaments))
+  } else {
+    let visited_tournaments = [{
+      path: path,
+      timestamp: timestamp,
+      name: tournament_name
+    }]
+    localStorage.setItem('visited_tournaments', JSON.stringify(visited_tournaments))
+  }
+}
+</script>

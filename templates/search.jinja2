@@ -1,7 +1,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<body onload=addRecentTournaments()>
 <input type="text" autofocus="autofocus" onfocus="this.select()" id="search">
-
+</br>
+</br>
+<p>Recently visited tournaments</p>
+<div id="recent"></div>
+</body>
 <script>
   var search = document.getElementById("search");
   search.addEventListener("keydown", function(event) {
@@ -10,4 +14,33 @@
           window.location.href = "/bracket/search/"+searchText;
       }
   });
+  function getRecentTournaments() {
+    let visited_tournaments = JSON.parse(localStorage.getItem('visited_tournaments'));
+    if (visited_tournaments) {
+      return visited_tournaments.filter(tournament => {
+        let days_ago = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000)
+        return tournament.timestamp > days_ago.getTime()
+      })
+    } else {
+      return null
+    }
+  }
+  function addRecentTournaments() {
+    let recent = document.getElementById('recent')
+    let recent_tournaments = getRecentTournaments();
+    
+    if(recent_tournaments){
+      for (tournament of recent_tournaments) {
+        let a = document.createElement("a")
+        let text = document.createTextNode(tournament.name)
+        a.appendChild(text)
+        a.href = tournament.path
+        recent.appendChild(a)
+        recent.appendChild(document.createElement("br"))
+      }
+    }
+  }
+
+
+
 </script>
