@@ -1,5 +1,7 @@
 import json
 import tournament
+import requests
+from urllib.parse import urlparse
 from graphqlclient import GraphQLClient
 from algoliasearch.search_client import SearchClient
 
@@ -17,7 +19,7 @@ class GGClient(object):
         self.user_agent = 'Mozilla/5.0'
         self.headers = {
             'User-Agent': self.user_agent,
-            'client-version': 15,
+            'client-version': '15',
         }
 
 
@@ -36,7 +38,14 @@ class GGClient(object):
         return content
 
 
-    def search_for_tournaments(self, tournament_name):
+    def _execute_rest(self, url):
+        r = requests.get(url, headers=self.headers)
+        if r.status_code != 200:
+            raise ValueError(f'Received {r.status_code} status code from {url}')
+        return json.loads(r.text)
+
+
+    def _algolia_search(self, tournament_name):
         with open(self.algolia_file, 'r') as f:
             algolia = json.loads(f.read())
 
@@ -54,6 +63,40 @@ class GGClient(object):
             name = name.replace('<em>', '').replace('</em>', '')
             tournaments[id] = name
         return tournaments
+
+
+    def _rest_tournament_search(self, tournament_url):
+        tournament_json = self._execute_rest(tournament_url)['entities']['tournament']
+        tournament = {tournament_json['id']: tournament_json['name']}
+        return tournament
+
+
+    def _parse_smashgg_tournament_url(self, original_url):
+        # We've replaced / with _, a common custom for having links as url
+        # variables.
+        url = original_url.replace("_", "/")
+        api_url = url.replace("smash.gg", "api.smash.gg")
+
+        parsed_url = urlparse(api_url)
+        url_base = parsed_url.netloc
+        url_path = parsed_url.path
+        url_path = url_path.split("/")
+
+        try:
+            if url_base:
+                return f'https://{url_base}/{url_path[1]}/{url_path[2]}'
+            else:
+                return f'https://{url_path[0]}/{url_path[1]}/{url_path[2]}'
+        except:
+            raise ValueError(f'Could not parse url: {url}')
+
+
+    def search_for_tournaments(self, tournament_name):
+        if "smash.gg_tournament" in tournament_name:
+            full_url = self._parse_smashgg_tournament_url(tournament_name)
+            return self._rest_tournament_search(full_url)
+        else:
+            return self._algolia_search(tournament_name)
 
     def get_melee_events(self, tournament_id):
         gql = \
