@@ -1,6 +1,8 @@
 import json
 import tournament
 import requests
+from datetime import datetime
+import pytz
 from urllib.parse import urlparse
 from graphqlclient import GraphQLClient
 from algoliasearch.search_client import SearchClient
@@ -160,6 +162,9 @@ class GGClient(object):
                     id
                     displayIdentifier
                     bracketType
+                    wave {
+                      startAt
+                    }
                     seeds(query: {sortBy: "seedNum"}) {
                       nodes {
                         entrant {
@@ -181,6 +186,10 @@ class GGClient(object):
         }
         result = self._execute_gql(gql, variables)
         phase_groups = result['data']['phase']['phaseGroups']['nodes']
+        for phase_group in phase_groups:
+          if phase_group['wave']:
+            dateTime = datetime.fromtimestamp(phase_group['wave']['startAt'], pytz.timezone('Europe/Oslo'))
+            phase_group['wave']['startAt'] = (dateTime.strftime('%d-%m-%y, %H:%M, %Z'))
         return phase_groups
 
 
