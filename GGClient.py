@@ -298,3 +298,35 @@ class GGClient(object):
             """
         user = self._execute_gql(gql, { 'id': user_id } )['data']['participant']
         return user
+
+    def get_smashgg_url(self, tournament_id, event_id, phase_id, phase_group_id):
+      gql = \
+            """
+            query urlComponents($profileId: ID!, $eventId: ID!) {
+              tournament(id: $profileId) {
+                slug
+              }
+              event(id: $eventId) {
+                slug
+              }
+            }
+            """
+      variables = {
+        'profileId': tournament_id,
+        'eventId': event_id,
+      }
+
+      result = self._execute_gql(gql, variables)['data']
+
+      url = 'smash.gg/'
+      
+      if result['event']:
+        url += result['event']['slug']
+        if phase_id != 0:
+          url += '/brackets/'+str(phase_id)
+          if phase_group_id != 0:
+            url += '/'+str(phase_group_id)
+      elif result['tournament']:
+        url += result['tournament']['slug']
+      
+      return url

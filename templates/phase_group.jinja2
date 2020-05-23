@@ -2,7 +2,7 @@
 
 <span class="phase-groups">
   {% for phase_group in phase_groups %}
-    <a href="{{ url_path }}/{{ phase_group['id'] }}">{{ phase_group['displayIdentifier'] }}</a> Starts: {{phase_group['wave']['startAt']}} 
+    <a href="{{ url_path }}/{{ phase_group['id'] }}">{{ phase_group['displayIdentifier'] }}</a> Starts: {{phase_group['wave']['startAt']}}
     &emsp;&emsp;
     {% for entrant in phase_group['seeds']['nodes'] %}
       {{ entrant['entrant']['participants'][0]['gamerTag']}}
@@ -11,6 +11,8 @@
     </br>
   {% endfor %}
 </span>
+
+{% include 'smashgg_link.jinja2' %}
 {% include 'back.html' %}
 
 <style>

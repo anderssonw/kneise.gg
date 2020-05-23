@@ -7,4 +7,6 @@
 {% for phase in phases %}
   <a href="{{ url_path }}/{{ phase }}">{{ phases[phase] }}</a></br>
 {% endfor %}
+
+{% include 'smashgg_link.jinja2' %}
 {% include 'back.html' %}
