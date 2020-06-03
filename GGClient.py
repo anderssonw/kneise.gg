@@ -21,7 +21,7 @@ class GGClient(object):
         self.user_agent = 'Mozilla/5.0'
         self.headers = {
             'User-Agent': self.user_agent,
-            'client-version': '15',
+            'client-version': '16',
         }
 
 
