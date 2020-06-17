@@ -93,6 +93,20 @@ class GGClient(object):
             raise ValueError(f'Could not parse url: {url}')
 
 
+    def get_coming_tournaments(self):
+        api_url = 'https://smash.gg/api/-/gg_api./public/tournaments/schedule;'
+        filter = 'filter=%7B%22upcoming%22%3Atrue%2C%22videogameIds%22%3A1%7D;'
+        r = self._execute_rest(f'{api_url}{filter}')
+
+        tournaments = []
+        for t in r['items']['entities']['tournament']:
+            id = t['id']
+            name = t['name']
+            tournaments.append(tournament.Tournament(id, name))
+
+        return tournaments
+
+
     def search_for_tournaments(self, tournament_name):
         if "smash.gg_tournament" in tournament_name:
             search_url = tournament_name.strip()

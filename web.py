@@ -20,6 +20,13 @@ def search():
     return render_template('search.jinja2')
 
 
+@app.route('/tournaments')
+def coming_tournaments():
+    client = GGClient(logger=log)
+    t = client.get_coming_tournaments()
+    return render_template('coming_tournaments.jinja2', coming_tournaments=t)
+
+
 @app.route('/bracket/search/<string:search>')
 def choose_tournament(search):
     client = GGClient(logger=log)

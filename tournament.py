@@ -17,6 +17,12 @@ class BracketType(Enum):
     RACE = 8
 
 
+class Tournament(object):
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+
 class Prereq(object):
     def __init__(self, id, type):
         self.id = id
