@@ -9,7 +9,10 @@ from tournament import BracketType
 app = Flask(__name__)
 app.logger.setLevel(logging.INFO)
 
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+cache_config = \
+        {'CACHE_TYPE': 'simple'} if __name__ == '__main__' else \
+        {'CACHE_TYPE': 'uwsgi', 'CACHE_UWSGI_NAME': 'smashggcache', 'CACHE_DEFAULT_TIMEOUT': 60}
+cache = Cache(app, config=cache_config)
 cache.init_app(app)
 
 
