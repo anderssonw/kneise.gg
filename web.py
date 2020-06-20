@@ -7,7 +7,7 @@ from tournament import BracketType
 
 
 app = Flask(__name__)
-log = create_logger(app)
+app.logger.setLevel(logging.INFO)
 
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 cache.init_app(app)
@@ -27,14 +27,14 @@ def search():
 @app.route('/tournaments')
 @cache.memoize(timeout=60*60)
 def coming_tournaments():
-    client = GGClient(logger=log)
+    client = GGClient(logger=app.logger)
     t = client.get_coming_tournaments()
     return render_template('coming_tournaments.jinja2', coming_tournaments=t)
 
 
 @app.route('/bracket/search/<string:search>')
 def choose_tournament(search):
-    client = GGClient(logger=log)
+    client = GGClient(logger=app.logger)
     tournaments = client.search_for_tournaments(search)
     if len(tournaments) == 1:
         tournament_id = list(tournaments.keys())[0]
@@ -45,7 +45,7 @@ def choose_tournament(search):
 @app.route('/bracket/<int:tournament_id>')
 @cache.memoize(timeout=10*60)
 def choose_event(tournament_id):
-    client = GGClient(logger=log)
+    client = GGClient(logger=app.logger)
     events = client.get_melee_events(tournament_id)
     smashggurl = client.get_smashgg_url(tournament_id, 0, 0, 0)
 
@@ -58,7 +58,7 @@ def choose_event(tournament_id):
 @app.route('/bracket/<int:tournament_id>/<int:event_id>')
 @cache.memoize(timeout=10*60)
 def choose_phase(tournament_id, event_id):
-    client = GGClient(logger=log)
+    client = GGClient(logger=app.logger)
     phases = client.get_event_phases(event_id)
     smashggurl = client.get_smashgg_url(tournament_id, event_id, 0, 0)
 
@@ -71,7 +71,7 @@ def choose_phase(tournament_id, event_id):
 @app.route('/bracket/<int:tournament_id>/<int:event_id>/<int:phase_id>')
 @cache.memoize(timeout=10*60)
 def choose_phase_group(tournament_id, event_id, phase_id):
-    client = GGClient(logger=log)
+    client = GGClient(logger=app.logger)
     phase_groups = client.get_phase_groups(phase_id)
     smashggurl = client.get_smashgg_url(tournament_id, event_id, phase_id, 0)
 
@@ -84,7 +84,7 @@ def choose_phase_group(tournament_id, event_id, phase_id):
 @app.route('/bracket/<int:tournament_id>/<int:event_id>/<int:phase_id>/<int:phase_group_id>')
 @cache.memoize(timeout=1*60)
 def render_bracket(tournament_id, event_id, phase_id, phase_group_id):
-    client = GGClient(logger=log)
+    client = GGClient(logger=app.logger)
     bracket = client.get_phase_group_bracket(phase_group_id, tournament_id)
     bracket.finalize()
     smashggurl = client.get_smashgg_url(tournament_id, event_id, phase_id, phase_group_id)
@@ -97,6 +97,6 @@ def render_bracket(tournament_id, event_id, phase_id, phase_group_id):
 
 @app.route('/user/<int:user_id>')
 def user_tournaments(user_id):
-    client = GGClient(logger=log)
+    client = GGClient(logger=app.logger)
     user = client.get_user(user_id)
     return render_template('user.jinja2', user=user)
