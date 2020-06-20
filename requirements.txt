@@ -2,3 +2,4 @@ flask
 anytree
 algoliasearch
 pytz
+flask-caching

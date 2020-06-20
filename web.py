@@ -2,11 +2,15 @@ import logging
 from GGClient import GGClient
 from flask import Flask, render_template, redirect, request, jsonify
 from flask.logging import create_logger
+from flask_caching import Cache
 from tournament import BracketType
 
 
 app = Flask(__name__)
 log = create_logger(app)
+
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+cache.init_app(app)
 
 
 @app.errorhandler(ValueError)
@@ -21,6 +25,7 @@ def search():
 
 
 @app.route('/tournaments')
+@cache.memoize(timeout=60*60)
 def coming_tournaments():
     client = GGClient(logger=log)
     t = client.get_coming_tournaments()
@@ -38,6 +43,7 @@ def choose_tournament(search):
 
 
 @app.route('/bracket/<int:tournament_id>')
+@cache.memoize(timeout=10*60)
 def choose_event(tournament_id):
     client = GGClient(logger=log)
     events = client.get_melee_events(tournament_id)
@@ -50,6 +56,7 @@ def choose_event(tournament_id):
 
 
 @app.route('/bracket/<int:tournament_id>/<int:event_id>')
+@cache.memoize(timeout=10*60)
 def choose_phase(tournament_id, event_id):
     client = GGClient(logger=log)
     phases = client.get_event_phases(event_id)
@@ -62,6 +69,7 @@ def choose_phase(tournament_id, event_id):
 
 
 @app.route('/bracket/<int:tournament_id>/<int:event_id>/<int:phase_id>')
+@cache.memoize(timeout=10*60)
 def choose_phase_group(tournament_id, event_id, phase_id):
     client = GGClient(logger=log)
     phase_groups = client.get_phase_groups(phase_id)
@@ -74,6 +82,7 @@ def choose_phase_group(tournament_id, event_id, phase_id):
 
 
 @app.route('/bracket/<int:tournament_id>/<int:event_id>/<int:phase_id>/<int:phase_group_id>')
+@cache.memoize(timeout=1*60)
 def render_bracket(tournament_id, event_id, phase_id, phase_group_id):
     client = GGClient(logger=log)
     bracket = client.get_phase_group_bracket(phase_group_id, tournament_id)
