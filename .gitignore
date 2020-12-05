@@ -5,3 +5,4 @@ log
 env
 .vscode
 id_rsa.kneise
+*.db

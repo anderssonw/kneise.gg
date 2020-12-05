@@ -1,5 +1,5 @@
 import json
-import tournament
+import smashgg.tournament
 import requests
 from datetime import datetime
 import pytz

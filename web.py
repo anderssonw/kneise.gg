@@ -1,9 +1,10 @@
 import logging
-from GGClient import GGClient
+from smashgg.GGClient import GGClient
+from smashgg.tournament import BracketType
+from smashgg.whomst.whomst_db import Whomst
 from flask import Flask, render_template, redirect, request, jsonify
 from flask.logging import create_logger
 from flask_caching import Cache
-from tournament import BracketType
 
 
 app = Flask(__name__)
@@ -17,6 +18,9 @@ except ImportError:
 finally:
     cache = Cache(app, config=cache_config)
     cache.init_app(app)
+
+whomster = Whomst('./whomst/')
+whomster.setup_database()
 
 
 @app.errorhandler(ValueError)
@@ -106,3 +110,26 @@ def user_tournaments(user_id):
     client = GGClient(logger=app.logger)
     user = client.get_user(user_id)
     return render_template('user.jinja2', user=user)
+
+
+@app.route('/whomst')
+def whomst_display():
+    big_whomst = ""
+    whomsts = whomster.fetch(10)
+    for w in whomsts:
+        big_whomst += f'{w["display_name"]} {w["connect_code"]} {w["ip_address"]} {w["region"]}</br>'
+    return big_whomst
+
+
+
+@app.route('/whomst/insert', methods=['POST'])
+def whomst_insert():
+    content = request.get_json(force=True, silent=True)
+
+    display_name = content['display_name']
+    connect_code = content['connect_code']
+    ip_address = content['ip_address']
+    region = content['region']
+    whomster.whomst(display_name, connect_code, ip_address, region)
+
+    return 'whomsted successfully'
