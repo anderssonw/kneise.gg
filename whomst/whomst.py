@@ -1,12 +1,13 @@
 import binascii
 import pyshark
 import re
+import requests
 
 # Temporary.
 from ip2geotools.databases.noncommercial import DbIpCity
 
 
-class Capture(object):
+class WhomstCapture(object):
     def __init__(self, interface=None, bpf_filter=None):
         self.capture = None
 
@@ -18,9 +19,20 @@ class Capture(object):
         self.re_address = re.compile(r'"oppAddress":"([^"]*)"')
 
 
+    def post_whomst(self, display_name, connect_code, ip_address, region):
+        json = {
+            'display_name': display_name,
+            'connect_code': connect_code,
+            'ip_address': ip_address,
+            'region': region
+        }
+        requests.post('https://kneise.eu/whomst/insert', json=json)
+
+
     def sniff_continuously(self):
         self.capture = pyshark.LiveCapture(self.interface, self.bpf_filter)
-        self.capture.set_debug(True)
+        print('Waiting for Slippi game...')
+
         for packet in self.capture.sniff_continuously():
             try:
                 packet_content = binascii.unhexlify(packet.data.data)
@@ -43,6 +55,8 @@ class Capture(object):
                 print('  IP-address:    %s' % ip_address)
                 print('  From:          %s, %s' % (r.region, r.country))
 
+                self.post_whomst(display_name, connect_code, ip_address, r.region + ', ' + r.country)                
+
 
 if __name__ == '__main__':
     bpf_filter = 'udp'
@@ -50,6 +64,6 @@ if __name__ == '__main__':
     bpf_filter += ' and not ip multicast'
     bpf_filter += ' and len > 100'
 
-    capture = Capture(bpf_filter=bpf_filter)
+    capture = WhomstCapture(bpf_filter=bpf_filter)
     capture.sniff_continuously()
 
