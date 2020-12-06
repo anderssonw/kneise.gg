@@ -1,0 +1,40 @@
+<style>
+  #whomst {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  }
+
+  table, th, td {
+  border: 1px solid black;
+  }
+</style>
+
+<table id="whomst">
+  <tr>
+    <td>Display name</td>
+    <td>Connect code</td>
+    <td>IP-address</td>
+    <td>Area</td>
+    <td>Timestamp</td>
+  </tr>
+  {% for whomst in whomsts %}
+    <tr>
+      <td>
+	{{ whomst['display_name'] }}
+      </td>
+      <td>
+	{{ whomst['connect_code'] }}
+      </td>
+      <td>
+	{{ whomst['ip_address'] }}
+      </td>
+      <td>
+	{{ whomst['region'] }}
+      </td>
+      <td>
+	{{ whomst['time_added'] }}
+      </td>
+    </tr>
+  {% endfor %}
+</table>

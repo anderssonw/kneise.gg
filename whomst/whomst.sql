@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS whomst(
        connect_code VARCHAR NOT NULL,
        ip_address VARCHAR NOT NULL,
        region VARCHAR NOT NULL,
+       time_added TIMESTAMP NOT NULL,
        UNIQUE(display_name, connect_code, ip_address)
 );

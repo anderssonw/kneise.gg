@@ -114,11 +114,9 @@ def user_tournaments(user_id):
 
 @app.route('/whomst')
 def whomst_display():
-    big_whomst = ""
-    whomsts = whomster.fetch(10)
-    for w in whomsts:
-        big_whomst += f'{w["display_name"]} {w["connect_code"]} {w["ip_address"]} {w["region"]}</br>'
-    return big_whomst
+    whomsts = whomster.fetch(100)
+    app.logger.info(whomsts[0]['display_name'])
+    return render_template('whomst.jinja2', whomsts=whomsts)
 
 
 

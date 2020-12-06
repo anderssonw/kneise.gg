@@ -1,5 +1,6 @@
 import sqlite3
 import os
+import datetime
 
 
 DB_NAME = 'whomst.db'
@@ -35,23 +36,27 @@ class Whomst(object):
         with conn:
             cur = conn.cursor()
             cur.execute(
-                "INSERT INTO whomst(display_name, connect_code, ip_address, region) VALUES(?, ?, ?, ?)",
-                (display_name, connect_code, ip_address, region)
+                """
+                INSERT INTO whomst(display_name, connect_code, ip_address, region, time_added)
+                VALUES(?, ?, ?, ?, ?)
+                """,
+                (display_name, connect_code, ip_address, region, datetime.datetime.now())
             )
         conn.commit()
         conn.close()
 
 
     def fetch(self, limit=10):
-        whomsts = []
-
         conn = self.get_db_connection()
         with conn:
             cur = conn.cursor()
-            cur.execute("SELECT display_name, connect_code, ip_address, region FROM whomst LIMIT ?", (str(limit),));
+            cur.execute(
+                """
+                SELECT display_name, connect_code, ip_address, region, time_added
+                FROM whomst
+                ORDER BY time_added DESC
+                LIMIT ?
+                """, (str(limit),));
             rows = cur.fetchall()
-            for row in rows:
-                whomsts.append(row)
         conn.close()
-
-        return whomsts
+        return [dict(row) for row in rows]
