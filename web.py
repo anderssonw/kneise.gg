@@ -29,6 +29,13 @@ def handle_value_error(error):
         f'<br><br>{str(error)}'
 
 
+@app.route('/robots.txt')
+def robots():
+    r = Response(response="User-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
+    r.headers["Content-Type"] = "text/plain; charset=utf-8"
+    return r
+
+
 @app.route('/')
 def search():
     return render_template('search.jinja2')
