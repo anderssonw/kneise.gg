@@ -104,6 +104,13 @@ int main(int argc, char *argv[])
     sniffer_config.set_immediate_mode(true);
 
     std::cout << "Waiting for Slippi match..." << std::endl;
-    Sniffer sniffer(default_interface.name(), sniffer_config);
-    sniffer.sniff_loop(sniff_callback);
+    try
+    {
+        Sniffer sniffer(default_interface.name(), sniffer_config);
+        sniffer.sniff_loop(sniff_callback);
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
