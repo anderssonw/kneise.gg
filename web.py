@@ -119,7 +119,7 @@ def user_tournaments(user_id):
     return render_template('user.jinja2', user=user)
 
 
-@app.route('/whomst')
+@app.route('/whomst/')
 def whomst_display():
     whomsts = whomster.fetch(100)
     return render_template('whomst.jinja2', whomsts=whomsts)

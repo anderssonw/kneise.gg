@@ -55,7 +55,7 @@ class WhomstCapture(object):
                 print('  IP-address:    %s' % ip_address)
                 print('  From:          %s, %s' % (r.region, r.country))
 
-                self.post_whomst(display_name, connect_code, ip_address, r.region + ', ' + r.country)                
+                self.post_whomst(display_name, connect_code, ip_address, r.region + ', ' + r.country)
 
 
 if __name__ == '__main__':
