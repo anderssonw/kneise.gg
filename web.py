@@ -138,8 +138,15 @@ def whomst_insert():
     return 'whomsted successfully'
 
 
-@app.route('/whomst/search/<ip_address>', defaults={'mask': 24})
-@app.route('/whomst/search/<ip_address>/<mask>')
-def whomst_search(ip_address, mask):
+@app.route('/whomst/search/ip_address/<ip_address>', defaults={'mask': 24})
+@app.route('/whomst/search/ip_address/<ip_address>/<mask>')
+def whomst_search_ip_address(ip_address, mask):
     whomsts = whomster.fetch_by_ip_address(ip_address, mask=int(mask), limit=100)
+    return render_template('whomst.jinja2', whomsts=whomsts)
+
+
+@app.route('/whomst/search/connect_code/<connect_code>')
+def whomst_search_connect_code(connect_code):
+    connect_code = connect_code.replace("_", "#")
+    whomsts = whomster.fetch_by_connect_code(connect_code, limit=100)
     return render_template('whomst.jinja2', whomsts=whomsts)

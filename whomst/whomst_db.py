@@ -80,3 +80,20 @@ class Whomst(object):
             rows = cur.fetchall()
         conn.close()
         return [dict(row) for row in rows]
+
+
+    def fetch_by_connect_code(self, connect_code, limit=100):
+        conn = self.get_db_connection()
+        with conn:
+            cur = conn.cursor()
+            cur.execute(
+                """
+                SELECT display_name, connect_code, ip_address, region, time_added
+                FROM whomst
+                WHERE connect_code LIKE ?
+                ORDER BY time_added DESC
+                LIMIT ?
+                """, (connect_code, str(limit)));
+            rows = cur.fetchall()
+        conn.close()
+        return [dict(row) for row in rows]

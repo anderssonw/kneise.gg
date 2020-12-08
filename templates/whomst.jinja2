@@ -24,10 +24,14 @@
 	{{ whomst['display_name'] }}
       </td>
       <td>
-	{{ whomst['connect_code'] }}
+	<a href="/whomst/search/connect_code/{{ whomst['connect_code'] | replace("#", "_") }}">
+	  {{ whomst['connect_code'] }}
+	</a>
       </td>
       <td>
-	<a href="/whomst/search/{{ whomst['ip_address'] }}/24">{{ whomst['ip_address'] }}</a>
+	<a href="/whomst/search/ip_address/{{ whomst['ip_address'] }}/24">
+	  {{ whomst['ip_address'] }}
+	</a>
       </td>
       <td>
 	{{ whomst['region'] }}
