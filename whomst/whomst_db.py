@@ -60,3 +60,23 @@ class Whomst(object):
             rows = cur.fetchall()
         conn.close()
         return [dict(row) for row in rows]
+
+
+    def fetch_by_ip_address(self, ip_address, mask=32, limit=100):
+        assert(mask in [8, 16, 24, 32])
+        search_ip_address = '.'.join(ip_address.split('.')[:(mask//8)])
+
+        conn = self.get_db_connection()
+        with conn:
+            cur = conn.cursor()
+            cur.execute(
+                """
+                SELECT display_name, connect_code, ip_address, region, time_added
+                FROM whomst
+                WHERE ip_address LIKE ?
+                ORDER BY time_added DESC
+                LIMIT ?
+                """, (search_ip_address + '%', str(limit)));
+            rows = cur.fetchall()
+        conn.close()
+        return [dict(row) for row in rows]

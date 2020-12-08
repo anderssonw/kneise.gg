@@ -125,7 +125,6 @@ def whomst_display():
     return render_template('whomst.jinja2', whomsts=whomsts)
 
 
-
 @app.route('/whomst/insert', methods=['POST'])
 def whomst_insert():
     content = request.get_json(force=True, silent=True)
@@ -137,3 +136,10 @@ def whomst_insert():
     whomster.whomst(display_name, connect_code, ip_address, region)
 
     return 'whomsted successfully'
+
+
+@app.route('/whomst/search/<ip_address>', defaults={'mask': 24})
+@app.route('/whomst/search/<ip_address>/<mask>')
+def whomst_search(ip_address, mask):
+    whomsts = whomster.fetch_by_ip_address(ip_address, mask=int(mask), limit=100)
+    return render_template('whomst.jinja2', whomsts=whomsts)
