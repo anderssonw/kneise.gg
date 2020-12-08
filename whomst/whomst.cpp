@@ -36,7 +36,7 @@ std::string geolocate_ip_address(std::string &ip_address)
 {
     cpr::Response r = cpr::Get(cpr::Url{"https://freegeoip.app/csv/" + ip_address});
     std::vector<std::string> ip_info = split(std::string(r.text), ",");
-    return ip_info[7] + ", " + ip_info[2];
+    return ip_info[5] + ", " + ip_info[4] + ", " + ip_info[2];
 }
 
 void post_whomst(std::string display_name, std::string connect_code,
