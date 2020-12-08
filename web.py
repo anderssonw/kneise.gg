@@ -150,3 +150,19 @@ def whomst_search_connect_code(connect_code):
     connect_code = connect_code.replace("_", "#")
     whomsts = whomster.fetch_by_connect_code(connect_code, limit=100)
     return render_template('whomst.jinja2', whomsts=whomsts)
+
+
+@app.route('/whomst/note', methods=['POST'])
+def whomst_note():
+    content = request.get_json(force=True, silent=True)
+    try:
+        display_name = content['display_name']
+        connect_code = content['connect_code'].replace("_", "#")
+        ip_address = content['ip_address']
+        note = content['note']
+    except Exception:
+        app.logger.info(content)
+        return "not quite right"
+
+    updated = whomster.set_note(display_name, connect_code, ip_address, note)
+    return "quite right"

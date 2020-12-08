@@ -52,11 +52,11 @@ class Whomst(object):
             cur = conn.cursor()
             cur.execute(
                 """
-                SELECT display_name, connect_code, ip_address, region, time_added
+                SELECT display_name, connect_code, ip_address, region, time_added, note
                 FROM whomst
                 ORDER BY time_added DESC
                 LIMIT ?
-                """, (str(limit),));
+                """, (str(limit),))
             rows = cur.fetchall()
         conn.close()
         return [dict(row) for row in rows]
@@ -71,12 +71,13 @@ class Whomst(object):
             cur = conn.cursor()
             cur.execute(
                 """
-                SELECT display_name, connect_code, ip_address, region, time_added
+                SELECT display_name, connect_code, ip_address, region, time_added, note
                 FROM whomst
                 WHERE ip_address LIKE ?
                 ORDER BY time_added DESC
                 LIMIT ?
-                """, (search_ip_address + '%', str(limit)));
+                """, (search_ip_address + '%', str(limit))
+            )
             rows = cur.fetchall()
         conn.close()
         return [dict(row) for row in rows]
@@ -88,12 +89,28 @@ class Whomst(object):
             cur = conn.cursor()
             cur.execute(
                 """
-                SELECT display_name, connect_code, ip_address, region, time_added
+                SELECT display_name, connect_code, ip_address, region, time_added, note
                 FROM whomst
                 WHERE connect_code LIKE ?
                 ORDER BY time_added DESC
                 LIMIT ?
-                """, (connect_code, str(limit)));
+                """, (connect_code, str(limit))
+            )
             rows = cur.fetchall()
         conn.close()
         return [dict(row) for row in rows]
+
+
+    def set_note(self, display_name, connect_code, ip_address, note):
+        conn = self.get_db_connection()
+        with conn:
+            cur = conn.cursor()
+            cur.execute(
+                """
+                UPDATE whomst
+                SET note = ?
+                WHERE display_name = ? AND connect_code = ? AND ip_address = ?
+                """, (note, display_name, connect_code, ip_address)
+            )
+        conn.commit()
+        conn.close()
