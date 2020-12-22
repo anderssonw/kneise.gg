@@ -53,6 +53,11 @@ li.game-spacer {
     min-height: 40px;
 }
 
+li.game-spacer-link {
+    border-right: 1px solid turquoise;
+    min-height: 40px;
+}
+
 li.game-bottom {
     border-top:1px solid #aaa;
 }

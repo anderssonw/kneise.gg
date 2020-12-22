@@ -1,10 +1,10 @@
 import json
-import smashgg.tournament
+import smashgg.tournament as tournament
 import requests
 from datetime import datetime
 import pytz
 from urllib.parse import urlparse
-from graphqlclient import GraphQLClient
+from python_graphql_client import GraphqlClient
 from algoliasearch.search_client import SearchClient
 
 
@@ -16,7 +16,7 @@ class GGClient(object):
     def __init__(self, api_endpoint='https://smash.gg/api/-/gql', logger=None):
         self.api_endpoint = api_endpoint
         self.logger = logger
-        self.gql_client = GraphQLClient(self.api_endpoint)
+        self.gql_client = GraphqlClient(self.api_endpoint)
         self.algolia_file = 'algolia.json'
         self.user_agent = 'Mozilla/5.0'
         self.headers = {
@@ -35,7 +35,7 @@ class GGClient(object):
 
     def _execute_gql(self, gql, variables):
         result = self.gql_client.execute(gql, variables=variables, headers=self.headers)
-        content = json.loads(result)
+        content = result
         self.log_gql_execution(gql)
         return content
 
@@ -228,6 +228,10 @@ class GGClient(object):
                     identifier
                     wPlacement
                     completedAt
+                    stream {
+                      streamName
+                      streamSource
+                    }
                     slots {
                       prereqId
                       prereqType
@@ -279,6 +283,10 @@ class GGClient(object):
         bracket = tournament.Bracket(phase_group_id, bracket_name, bracket_type, tournament_name)
 
         for set in phase_group['sets']['nodes']:
+            stream = None
+            if set['stream']:
+              if set['stream']['streamSource'] == 'TWITCH':
+                stream = 'https://twitch.tv/'+set['stream']['streamName']
             set_params = {
                 'id': set['id'],
                 'phase': phase_group_id,
@@ -289,6 +297,7 @@ class GGClient(object):
                 'is_gf': set['wPlacement'] == 1,
                 'completed': set['completedAt'] is not None,
                 'slots': set['slots'],
+                'stream': stream
             }
             bracket.add_set(**set_params)
 

@@ -10,12 +10,15 @@
 	{% for set in bracket.rounds[round] %}
 	  {% set upper_entrant = set.upper_slot.entrant %}
 	  {% set lower_entrant = set.lower_slot.entrant %}
-
 	  <li class="game game-top {{'winner' if upper_entrant.id == set.winner_id}}">
 	    <a href="/user/{{ upper_entrant.participant_id }}">{{ upper_entrant.name }}</a>
 	    <span>{{ upper_entrant.score }}</span>
 	  </li>
-	  <li class="game game-spacer">&nbsp;</li>
+	  {% if set.stream is string() %}
+		  <a href="{{set.stream}}"><li class="game game-spacer-link">&nbsp;</li></a>
+	  {% else %}
+		  <li class="game game-spacer">&nbsp;</li>
+	  {% endif %}
 	  <li class="game game-bottom {{'winner' if lower_entrant.id == set.winner_id}}">
 	    <a href="/user/{{ lower_entrant.participant_id }}">{{ lower_entrant.name }}</a>
 	    <span>{{ lower_entrant.score }}</span>
@@ -41,7 +44,11 @@
 	    <a href="/user/{{ upper_entrant.participant_id }}">{{ upper_entrant.name }}</a>
 	    <span>{{ upper_entrant.score }}</span>
 	  </li>
-	  <li class="game game-spacer">&nbsp;</li>
+	  {% if set.stream is string() %}
+		  <a href="{{set.stream}}"><li class="game game-spacer-link">&nbsp;</li></a>
+	  {% else %}
+		  <li class="game game-spacer">&nbsp;</li>
+	  {% endif %}
 	  <li class="game game-bottom {{'winner' if lower_entrant.id == set.winner_id}}">
 	    <a href="/user/{{ lower_entrant.participant_id }}">{{ lower_entrant.name }}</a>
 	    <span>{{ lower_entrant.score }}</span>

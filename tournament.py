@@ -47,7 +47,7 @@ class Entrant(object):
 
 class Set(object):
     def __init__(self, id, phase_group_id, round, display_score, winner_id,
-                 identifier, is_gf, completed, slots):
+                 identifier, is_gf, completed, slots, stream):
         self.id = id
         self.phase_group_id = phase_group_id
         self.round = round
@@ -56,6 +56,7 @@ class Set(object):
         self.identifier = identifier
         self.is_gf = is_gf
         self.completed = completed
+        self.stream = stream
 
         self.slots = []
         self.entrants = []
@@ -178,8 +179,8 @@ class Bracket(object):
         return self.rounds[min(self.get_rounds())][0]
 
 
-    def add_set(self, id, phase, round, display_score, winner_id, identifier, is_gf, completed, slots):
-        set = Set(id, phase, round, display_score, winner_id, identifier, is_gf, completed, slots)
+    def add_set(self, id, phase, round, display_score, winner_id, identifier, is_gf, completed, slots, stream):
+        set = Set(id, phase, round, display_score, winner_id, identifier, is_gf, completed, slots, stream)
 
         # Add to smorgasbord for all sets.
         self.sets[set.id] = set
