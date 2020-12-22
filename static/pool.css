@@ -19,9 +19,8 @@ td {
     text-overflow: ellipsis;
 }
 
-a {
-    color: black;
-    text-decoration: none;
+.entrant a {
+    color: lime;
 }
 
 .entrant {
@@ -29,13 +28,13 @@ a {
 }
 
 .win {
-    border: 2px solid black;
+    border: 2px solid blanchedalmond;
     color: #22b24c;
     border-color: #83e9a1;
 }
 
 .loss {
-    border: 2px solid black;
+    border: 2px solid blanchedalmond;
     color: #d0021b;
     border-color: #ea7986;
 }
