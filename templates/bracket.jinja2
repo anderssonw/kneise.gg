@@ -16,7 +16,7 @@
 	    <span>{{ upper_entrant.score }}</span>
 	  </li>
 	  {% if set.stream is string() %}
-		  <a href="{{set.stream}}"><li class="game game-spacer-link">&nbsp;</li></a>
+		  <li class="game game-spacer-link"><a href="{{set.stream}}">&nbsp;</a></li>
 	  {% else %}
 		  <li class="game game-spacer">&nbsp;</li>
 	  {% endif %}
@@ -46,7 +46,7 @@
 	    <span>{{ upper_entrant.score }}</span>
 	  </li>
 	  {% if set.stream is string() %}
-		  <a href="{{set.stream}}"><li class="game game-spacer-link">&nbsp;</li></a>
+		  <li class="game game-spacer-link"><a href="{{set.stream}}">&nbsp;</a></li>
 	  {% else %}
 		  <li class="game game-spacer">&nbsp;</li>
 	  {% endif %}

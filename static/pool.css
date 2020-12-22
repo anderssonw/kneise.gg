@@ -19,35 +19,35 @@ td {
     text-overflow: ellipsis;
 }
 
-.entrant a {
-    color: lime;
-}
-
 .entrant {
     font-weight: bold;
 }
 
+.entrant a {
+    text-decoration: none;
+}
+
 .win {
     border: 2px solid blanchedalmond;
-    color: #22b24c;
     border-color: #83e9a1;
+    color: #83e9a1;
 }
 
 .loss {
     border: 2px solid blanchedalmond;
-    color: #d0021b;
     border-color: #ea7986;
+    color: #ea7986;
 }
 
 .uncompleted {
-    border: 2px solid grey;
-    color: #999;
-    border-color: #cdcccc;
+    border: 2px solid blanchedalmond;
+    border-color: #BB86FC;
 }
 
 .diag {
-    border-color: #e6e6e6 !important;
-    background-color: #e6e6e6;
+    border: 2px solid #454545;
+    border-color: #454545 !important;
+    background-color: #303030;
     text-indent: -9999px;
 }
 

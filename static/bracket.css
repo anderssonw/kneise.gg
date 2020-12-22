@@ -20,12 +20,21 @@ main {
     flex-grow: 1;
 }
 
+.round .game-spacer-link {
+  flex-grow: 1;
+}
+
 body {
   font-family: sans-serif;
   font-size: small;
   padding: 10px;
   line-height: 1.4em;
 }
+
+li a {
+  text-decoration: none;
+}
+
 
 li.game {
   padding-left: 20px;
@@ -36,7 +45,7 @@ li.game {
 
 li.game.winner {
     font-weight: bold;
-    color: green;
+    color: lime;
 }
 
 li.game span{
@@ -45,26 +54,29 @@ li.game span{
 }
 
 li.game-top {
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #BB86FC;
 }
 
 li.game-spacer {
-    border-right: 1px solid #aaa;
+    border-right: 1px solid #BB86FC;
     min-height: 40px;
 }
 
 li.game-spacer-link {
-    border-right: 1px solid turquoise;
+    border-right: 2px dashed #03DAC5;
     min-height: 40px;
 }
 
 li.game-bottom {
-    border-top:1px solid #aaa;
+    border-top:1px solid #BB86FC;
+}
+
+li.game a {
+  flex-grow: 1;
 }
 
 a {
     color: inherit;
-    text-decoration: none;
     display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
