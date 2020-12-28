@@ -102,7 +102,8 @@ class GGClient(object):
         for t in r['items']['entities']['tournament']:
             id = t['id']
             name = t['name']
-            tournaments.append(tournament.Tournament(id, name))
+            date = datetime.fromtimestamp(t['startAt'], pytz.timezone('Europe/Oslo'))
+            tournaments.append(tournament.Tournament(id, name, date))
 
         return tournaments
 

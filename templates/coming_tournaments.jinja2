@@ -2,8 +2,12 @@
 <link rel="stylesheet" type="text/css" href="/static/general.css" />
 
 <h1>Coming tournaments</h1>
-{% for tournament in coming_tournaments %}
-  <a href="/bracket/{{ tournament.id }}">{{ tournament.name }}</a></br>
+{% for date in coming_tournaments %}
+  <h3>{{ date[0].date.strftime('%A %Y-%m-%d') }}</h3>
+
+  {% for tournament in date %}
+    <a href="/bracket/{{ tournament.id }}">{{ tournament.name }}</a></br>
+  {% endfor %}
 {% endfor %}
 
 {% include 'back.html' %}

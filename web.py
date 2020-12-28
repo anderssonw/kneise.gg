@@ -5,6 +5,7 @@ from smashgg.whomst.whomst_db import Whomst
 from flask import Flask, render_template, redirect, request, jsonify
 from flask.logging import create_logger
 from flask_caching import Cache
+from itertools import groupby
 
 
 app = Flask(__name__)
@@ -46,7 +47,12 @@ def search():
 def coming_tournaments():
     client = GGClient(logger=app.logger)
     t = client.get_coming_tournaments()
-    return render_template('coming_tournaments.jinja2', coming_tournaments=t)
+
+    dates = []
+    for k, g in groupby(t, lambda t: t.date.strftime('%Y-%m-%d')):
+        dates.append(list(g))
+
+    return render_template('coming_tournaments.jinja2', coming_tournaments=dates)
 
 
 @app.route('/bracket/search/<string:search>')
