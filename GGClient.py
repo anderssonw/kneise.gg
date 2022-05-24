@@ -74,13 +74,8 @@ class GGClient(object):
             },
             """
         r = self._execute_gql(gql, {'name': tournament_name})
-
-
-
         tournaments = r['data']['tournaments']['nodes']
-
-        self.logger.info(f'tournaments: {tournaments}')
-
+        
         tournaments_out = []
         for t in tournaments:
             id = t['id']

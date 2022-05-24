@@ -6,6 +6,7 @@ from flask import Flask, render_template, redirect, request, jsonify
 from flask.logging import create_logger
 from flask_caching import Cache
 from itertools import groupby
+from urllib.parse import unquote_plus
 
 
 app = Flask(__name__)
@@ -57,6 +58,7 @@ def coming_tournaments():
 
 @app.route('/bracket/search/<string:search>')
 def choose_tournament(search):
+    search = unquote_plus(search)
     client = GGClient(logger=app.logger)
     tournaments = client.search_for_tournaments(search)
     if len(tournaments) == 1:
