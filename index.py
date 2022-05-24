@@ -20,8 +20,8 @@ finally:
     cache = Cache(app, config=cache_config)
     cache.init_app(app)
 
-whomster = Whomst('./whomst/')
-whomster.setup_database()
+#whomster = Whomst('./whomst/')
+#whomster.setup_database()
 
 
 @app.errorhandler(ValueError)
@@ -124,51 +124,51 @@ def user_tournaments(user_id):
     user = client.get_user(user_id)
     return render_template('user.jinja2', user=user)
 
-
-@app.route('/whomst/')
-def whomst_display():
-    whomsts = whomster.fetch(100)
-    return render_template('whomst.jinja2', whomsts=whomsts)
-
-
-@app.route('/whomst/insert', methods=['POST'])
-def whomst_insert():
-    content = request.get_json(force=True, silent=True)
-
-    display_name = content['display_name']
-    connect_code = content['connect_code']
-    ip_address = content['ip_address']
-    region = content['region']
-    whomster.whomst(display_name, connect_code, ip_address, region)
-
-    return 'whomsted successfully'
-
-
-@app.route('/whomst/search/ip_address/<ip_address>', defaults={'mask': 24})
-@app.route('/whomst/search/ip_address/<ip_address>/<mask>')
-def whomst_search_ip_address(ip_address, mask):
-    whomsts = whomster.fetch_by_ip_address(ip_address, mask=int(mask), limit=100)
-    return render_template('whomst.jinja2', whomsts=whomsts)
-
-
-@app.route('/whomst/search/connect_code/<connect_code>')
-def whomst_search_connect_code(connect_code):
-    connect_code = connect_code.replace("_", "#")
-    whomsts = whomster.fetch_by_connect_code(connect_code, limit=100)
-    return render_template('whomst.jinja2', whomsts=whomsts)
-
-
-@app.route('/whomst/note', methods=['POST'])
-def whomst_note():
-    content = request.get_json(force=True, silent=True)
-    try:
-        display_name = content['display_name']
-        connect_code = content['connect_code'].replace("_", "#")
-        ip_address = content['ip_address']
-        note = content['note']
-    except Exception:
-        app.logger.info(content)
-        return "not quite right"
-
-    updated = whomster.set_note(display_name, connect_code, ip_address, note)
-    return "quite right"
+# NO WHOMST FOR YOU!!!
+#@app.route('/whomst/')
+#def whomst_display():
+#    whomsts = whomster.fetch(100)
+#    return render_template('whomst.jinja2', whomsts=whomsts)
+#
+#
+#@app.route('/whomst/insert', methods=['POST'])
+#def whomst_insert():
+#    content = request.get_json(force=True, silent=True)
+#
+#    display_name = content['display_name']
+#    connect_code = content['connect_code']
+#    ip_address = content['ip_address']
+#    region = content['region']
+#    whomster.whomst(display_name, connect_code, ip_address, region)
+#
+#    return 'whomsted successfully'
+#
+#
+#@app.route('/whomst/search/ip_address/<ip_address>', defaults={'mask': 24})
+#@app.route('/whomst/search/ip_address/<ip_address>/<mask>')
+#def whomst_search_ip_address(ip_address, mask):
+#    whomsts = whomster.fetch_by_ip_address(ip_address, mask=int(mask), limit=100)
+#    return render_template('whomst.jinja2', whomsts=whomsts)
+#
+#
+#@app.route('/whomst/search/connect_code/<connect_code>')
+#def whomst_search_connect_code(connect_code):
+#    connect_code = connect_code.replace("_", "#")
+#    whomsts = whomster.fetch_by_connect_code(connect_code, limit=100)
+#    return render_template('whomst.jinja2', whomsts=whomsts)
+#
+#
+#@app.route('/whomst/note', methods=['POST'])
+#def whomst_note():
+#    content = request.get_json(force=True, silent=True)
+#    try:
+#        display_name = content['display_name']
+#        connect_code = content['connect_code'].replace("_", "#")
+#        ip_address = content['ip_address']
+#        note = content['note']
+#    except Exception:
+#        app.logger.info(content)
+#        return "not quite right"
+#
+#    updated = whomster.set_note(display_name, connect_code, ip_address, note)
+#    return "quite right"
