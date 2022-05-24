@@ -56,7 +56,7 @@ class GGClient(object):
             query MeleeTournamentsByName($name: String!) {
               tournaments(query: {
                 page: 1
-                sortBy: "startAt asc"
+                sortBy: "startAt desc"
                 filter: {
                   name: $name,
                   videogameIds: [
