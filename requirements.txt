@@ -3,3 +3,5 @@ anytree
 algoliasearch
 pytz
 flask-caching
+python_graphql_client
+python-dotenv

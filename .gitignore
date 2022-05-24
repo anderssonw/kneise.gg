@@ -2,7 +2,8 @@ python-graphql-client
 __pycache__
 algolia.json
 log
-env
 .vscode
 id_rsa.kneise
 *.db
+.vercel
+env

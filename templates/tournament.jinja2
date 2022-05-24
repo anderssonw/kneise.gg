@@ -3,7 +3,7 @@
 
 <h2>Results for search: {{search}}</h2>
 {% for tournament in tournaments %}
-  <a id="{{tournament}}" onclick="return toStorage({{tournament}})" href="{{url_path}}/{{tournament}}">{{ tournaments[tournament] }}</a></br>
+  <a id="{{tournament.id}}" onclick="return toStorage({{tournament.id}})" href="/bracket/{{tournament.id}}">{{ tournament.name }}</a></br>
 {% endfor %}
 </br>
 <h3>Couldn't find your tournament?</h3>

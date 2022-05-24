@@ -1,7 +1,7 @@
 import logging
-from smashgg.GGClient import GGClient
-from smashgg.tournament import BracketType
-from smashgg.whomst.whomst_db import Whomst
+from GGClient import GGClient
+from tournament import BracketType
+from whomst.whomst_db import Whomst
 from flask import Flask, render_template, redirect, request, jsonify
 from flask.logging import create_logger
 from flask_caching import Cache

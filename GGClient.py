@@ -1,11 +1,14 @@
 import json
-import smashgg.tournament as tournament
+import tournament as tournament
 import requests
 from datetime import datetime
 import pytz
 from urllib.parse import urlparse
 from python_graphql_client import GraphqlClient
 from algoliasearch.search_client import SearchClient
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class GGConstant(object):
@@ -13,15 +16,15 @@ class GGConstant(object):
 
 
 class GGClient(object):
-    def __init__(self, api_endpoint='https://smash.gg/api/-/gql', logger=None):
+    def __init__(self, api_endpoint='https://api.start.gg/gql/alpha', logger=None):
         self.api_endpoint = api_endpoint
         self.logger = logger
         self.gql_client = GraphqlClient(self.api_endpoint)
-        self.algolia_file = 'algolia.json'
         self.user_agent = 'Mozilla/5.0'
         self.headers = {
             'User-Agent': self.user_agent,
-            'client-version': '16',
+            'client-version': '20',
+            'Authorization': 'Bearer ' + os.getenv('SMASHGG_API_KEY')
         }
 
 
@@ -47,25 +50,45 @@ class GGClient(object):
         return json.loads(r.text)
 
 
-    def _algolia_search(self, tournament_name):
-        with open(self.algolia_file, 'r') as f:
-            algolia = json.loads(f.read())
+    def get_melee_tournaments(self, tournament_name):
+        gql = \
+            """
+            query MeleeTournamentsByName($name: String!) {
+              tournaments(query: {
+                page: 1
+                sortBy: "startAt asc"
+                filter: {
+                  name: $name,
+                  videogameIds: [
+                    1
+                  ]
+                }
+              }) {
+                nodes {
+                  id
+                  name
+                  slug
+                  startAt
+                }
+              }
+            },
+            """
+        r = self._execute_gql(gql, {'name': tournament_name})
 
-        client = SearchClient.create(algolia['application-id'], algolia['api-key'])
-        index = client.init_index('omnisearch')
-        objects = index.search(tournament_name)
 
-        if len(objects['hits']) == 0:
-            raise ValueError(f'Tournament "{tournament_name}" not found')
 
-        tournaments = {}
-        for tournament in objects['hits']:
-            id = tournament['profileId']
-            name = tournament['_highlightResult']['name']['value']
-            name = name.replace('<em>', '').replace('</em>', '')
-            tournaments[id] = name
-        return tournaments
+        tournaments = r['data']['tournaments']['nodes']
 
+        self.logger.info(f'tournaments: {tournaments}')
+
+        tournaments_out = []
+        for t in tournaments:
+            id = t['id']
+            name = t['name']
+            date = datetime.fromtimestamp(t['startAt'], pytz.timezone('Europe/Oslo'))
+            tournaments_out.append(tournament.Tournament(id, name, date))
+
+        return tournaments_out
 
     def _rest_tournament_search(self, tournament_url):
         tournament_json = self._execute_rest(tournament_url)['entities']['tournament']
@@ -114,7 +137,7 @@ class GGClient(object):
             full_url = self._parse_smashgg_tournament_url(search_url)
             return self._rest_tournament_search(full_url)
         else:
-            return self._algolia_search(tournament_name)
+            return self.get_melee_tournaments(tournament_name)
 
     def get_melee_events(self, tournament_id):
         gql = \
