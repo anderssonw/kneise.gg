@@ -1,4 +1,5 @@
 import json
+from operator import itemgetter
 import tournament as tournament
 import requests
 from datetime import datetime
@@ -329,16 +330,42 @@ class GGClient(object):
             query user_tournaments($id: ID!) {
               participant(id: $id) {
                 id
-                gamerTag
-                otherTournamentsCount
-                otherTournaments(limit: 100) {
-                  id
-                  name
+    						gamerTag
+                user {
+                  tournaments (query: {
+                    filter: {
+                      videogameId: [1]
+                    }
+                  }) {
+                    nodes {
+                      id
+                      name
+                      startAt
+                      endAt
+                    }
+                  }
                 }
               }
             }
             """
-        user = self._execute_gql(gql, { 'id': user_id } )['data']['participant']
+        r = self._execute_gql(gql, { 'id': user_id } )['data']['participant']
+        tournaments = r['user']['tournaments']['nodes']
+        tournaments.sort(key=lambda node: node['startAt'], reverse=True)
+
+        #for t in tournaments:
+        #  dateTime = datetime.fromtimestamp(t['startAt'], pytz.timezone('Europe/Oslo'))
+        #  t['startAt'] = (dateTime.strftime('%d-%m-%y, %H:%M, %Z'))
+
+
+        user = {}
+        user['tournaments'] = tournaments
+        user['gamerTag'] = r['gamerTag']
+        user['id'] = r['id']
+
+
+        print(user)
+
+
         return user
 
     def get_smashgg_url(self, tournament_id, event_id, phase_id, phase_group_id):

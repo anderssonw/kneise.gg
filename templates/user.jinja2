@@ -2,7 +2,18 @@
 <link rel="stylesheet" type="text/css" href="/static/general.css" />
 
 <h1>Tournaments for {{ user.gamerTag }}</h1>
-{% for tournament in user.otherTournaments %}
+
+
+<h2>Ongoing</h2>
+{% for tournament in user.ongoing %}
+  <a href="/bracket/{{ tournament.id }}">{{ tournament.name }}</a></br>
+{% endfor %}
+<h2>Upcoming</h2>
+{% for tournament in user.upcoming %}
+  <a href="/bracket/{{ tournament.id }}">{{ tournament.name }}</a></br>
+{% endfor %}
+<h2>Finished</h2>
+{% for tournament in user.finished %}
   <a href="/bracket/{{ tournament.id }}">{{ tournament.name }}</a></br>
 {% endfor %}
 

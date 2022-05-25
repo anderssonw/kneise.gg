@@ -7,6 +7,7 @@ from flask.logging import create_logger
 from flask_caching import Cache
 from itertools import groupby
 from urllib.parse import unquote_plus
+import time
 
 
 app = Flask(__name__)
@@ -124,6 +125,13 @@ def render_bracket(tournament_id, event_id, phase_id, phase_group_id):
 def user_tournaments(user_id):
     client = GGClient(logger=app.logger)
     user = client.get_user(user_id)
+
+    print(user['tournaments'])
+
+    user['upcoming'] = (filter(lambda elem: elem['startAt'] > int(time.time()) , user['tournaments']))
+    user['ongoing'] = (filter(lambda elem: (elem['startAt'] < int(time.time() and elem['endAt'] > int(time.time()))) , user['tournaments']))
+    user['finished'] = (filter(lambda elem: elem['endAt'] < int(time.time()) , user['tournaments']))
+
     return render_template('user.jinja2', user=user)
 
 # NO WHOMST FOR YOU!!!
