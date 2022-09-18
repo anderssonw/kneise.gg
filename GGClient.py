@@ -57,7 +57,8 @@ class GGClient(object):
             query MeleeTournamentsByName($name: String!) {
               tournaments(query: {
                 page: 1
-                sortBy: "startAt desc"
+                perPage: 500
+                sortBy: "startAt asc"
                 filter: {
                   name: $name,
                   videogameIds: [
@@ -78,8 +79,16 @@ class GGClient(object):
 
         tournaments = r['data']['tournaments']['nodes']
         
-        tournaments_out = []
+        filtered_tournaments = []
+        tournament_search = list(map(lambda name: name.lower(), tournament_name.split()))
+
         for t in tournaments:
+          split_name = list(map(lambda name: "".join(filter(str.isalnum, name.lower())), t['name'].split()))
+          if all(elem in split_name for elem in tournament_search):
+            filtered_tournaments.append(t)
+
+        tournaments_out = []
+        for t in filtered_tournaments:
             id = t['id']
             name = t['name']
             date = datetime.fromtimestamp(t['startAt'], pytz.timezone('Europe/Oslo'))
@@ -129,12 +138,13 @@ class GGClient(object):
 
 
     def search_for_tournaments(self, tournament_name):
-        if "smash.gg_tournament" in tournament_name:
-            search_url = tournament_name.strip()
-            full_url = self._parse_smashgg_tournament_url(search_url)
-            return self._rest_tournament_search(full_url)
-        else:
-            return self.get_melee_tournaments(tournament_name)
+      print(tournament_name)
+      if "smash.gg_tournament" in tournament_name:
+          search_url = tournament_name.strip()
+          full_url = self._parse_smashgg_tournament_url(search_url)
+          return self._rest_tournament_search(full_url)
+      else:
+          return self.get_melee_tournaments(tournament_name)
 
     def get_melee_events(self, tournament_id):
         gql = \
@@ -296,7 +306,7 @@ class GGClient(object):
         result = self._execute_gql(gql, variables)
         phase_group = result['data']['phaseGroup']
         page_result_num = phase_group['sets']['pageInfo']['total']
-        
+
         while page_result_num != 0:
           page_num = page_num + 1
           variables['page'] = page_num

@@ -63,7 +63,7 @@ def choose_tournament(search):
     client = GGClient(logger=app.logger)
     tournaments = client.search_for_tournaments(search)
     if len(tournaments) == 1:
-        tournament_id = list(tournaments.keys())[0]
+        tournament_id = tournaments[0].id
         return redirect(f'/bracket/{tournament_id}')
     return render_template('tournament.jinja2', url_path='/bracket', tournaments=tournaments, search=search)
 
