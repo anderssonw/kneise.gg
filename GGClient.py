@@ -75,6 +75,7 @@ class GGClient(object):
             },
             """
         r = self._execute_gql(gql, {'name': tournament_name})
+
         tournaments = r['data']['tournaments']['nodes']
         
         tournaments_out = []
@@ -228,6 +229,7 @@ class GGClient(object):
 
 
     def get_phase_group_bracket(self, phase_group_id, tournament_id):
+        page_num = 1
         gql = \
             """
             query bracket($phaseGroupId: ID!, $page: Int!, $perPage: Int!, $profileId: ID!) {
@@ -287,12 +289,22 @@ class GGClient(object):
             """
         variables = {
             'phaseGroupId': phase_group_id,
-            'page': 1,
-            'perPage': 999,
+            'page': page_num,
+            'perPage': 20,
             'profileId': tournament_id
         }
         result = self._execute_gql(gql, variables)
         phase_group = result['data']['phaseGroup']
+        page_result_num = phase_group['sets']['pageInfo']['total']
+        
+        while page_result_num != 0:
+          page_num = page_num + 1
+          variables['page'] = page_num
+          next_result = self._execute_gql(gql, variables)
+      
+          phase_group['sets']['nodes'] += next_result['data']['phaseGroup']['sets']['nodes']
+          page_result_num = next_result['data']['phaseGroup']['sets']['pageInfo']['total']
+        
 
         if phase_group['sets']['pageInfo']['total'] == 0:
             raise ValueError(f'Bracket for "{phase_group["phase"]["name"]}" not started')
@@ -305,8 +317,9 @@ class GGClient(object):
         for set in phase_group['sets']['nodes']:
             stream = None
             if set['stream']:
-              if set['stream']['streamSource'] == 'TWITCH':
-                stream = 'https://twitch.tv/'+set['stream']['streamName']
+              if 'streamSource' in set['stream']:
+                if set['stream']['streamSource'] == 'TWITCH':
+                  stream = 'https://twitch.tv/'+set['stream']['streamName']
             set_params = {
                 'id': set['id'],
                 'phase': phase_group_id,

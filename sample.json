@@ -1,0 +1,3806 @@
+{
+    "bracketType": "DOUBLE_ELIMINATION",
+    "phase": {
+        "name": "Bracket"
+    },
+    "sets": {
+        "pageInfo": {
+            "total": 55
+        },
+        "nodes": [
+            {
+                "id": 52022777,
+                "round": 4,
+                "displayScore": "Pipsqueak 3 - ISTE | Kongen p\u00e5 havet 2",
+                "winnerId": 10529488,
+                "identifier": "O",
+                "wPlacement": 2,
+                "completedAt": 1663506149,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022775",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10529488,
+                            "participants": [
+                                {
+                                    "id": 10045134,
+                                    "gamerTag": "Pipsqueak"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022776",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10536526,
+                            "participants": [
+                                {
+                                    "id": 10051535,
+                                    "gamerTag": "Kongen p\u00e5 havet"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 2,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022775,
+                "round": 3,
+                "displayScore": "Pipsqueak 3 - Daydee 2",
+                "winnerId": 10529488,
+                "identifier": "M",
+                "wPlacement": 3,
+                "completedAt": 1663501960,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022771",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10529488,
+                            "participants": [
+                                {
+                                    "id": 10045134,
+                                    "gamerTag": "Pipsqueak"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022772",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10745280,
+                            "participants": [
+                                {
+                                    "id": 10240392,
+                                    "gamerTag": "Daydee"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022776,
+                "round": 3,
+                "displayScore": "ISTE | Kongen p\u00e5 havet 3 - Savestate 0",
+                "winnerId": 10536526,
+                "identifier": "N",
+                "wPlacement": 3,
+                "completedAt": 1663502571,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022773",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10536526,
+                            "participants": [
+                                {
+                                    "id": 10051535,
+                                    "gamerTag": "Kongen p\u00e5 havet"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 2,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022774",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10576908,
+                            "participants": [
+                                {
+                                    "id": 10088815,
+                                    "gamerTag": "Savestate"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022838,
+                "round": -8,
+                "displayScore": "Savestate 3 - TheLabMaster 2",
+                "winnerId": 10576908,
+                "identifier": "AR",
+                "wPlacement": 4,
+                "completedAt": 1663506200,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022776",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10576908,
+                            "participants": [
+                                {
+                                    "id": 10088815,
+                                    "gamerTag": "Savestate"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022836",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10630821,
+                            "participants": [
+                                {
+                                    "id": 10136600,
+                                    "gamerTag": "TheLabMaster"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 20,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                },
+                                {
+                                    "seedNum": 4,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022839,
+                "round": -8,
+                "displayScore": "Daydee 3 - Saftblandarn 1",
+                "winnerId": 10745280,
+                "identifier": "AS",
+                "wPlacement": 4,
+                "completedAt": 1663503860,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022775",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10745280,
+                            "participants": [
+                                {
+                                    "id": 10240392,
+                                    "gamerTag": "Daydee"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022837",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10554737,
+                            "participants": [
+                                {
+                                    "id": 10068110,
+                                    "gamerTag": "Saftblandarn"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022836,
+                "round": -7,
+                "displayScore": "TheLabMaster 3 - Poppmaister6000 1",
+                "winnerId": 10630821,
+                "identifier": "AP",
+                "wPlacement": 5,
+                "completedAt": 1663500829,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022832",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10630821,
+                            "participants": [
+                                {
+                                    "id": 10136600,
+                                    "gamerTag": "TheLabMaster"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 20,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                },
+                                {
+                                    "seedNum": 4,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022833",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 11069081,
+                            "participants": [
+                                {
+                                    "id": 10528859,
+                                    "gamerTag": "Poppmaister6000"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 7,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022837,
+                "round": -7,
+                "displayScore": "Saftblandarn 3 - Nobody 0",
+                "winnerId": 10554737,
+                "identifier": "AQ",
+                "wPlacement": 5,
+                "completedAt": 1663500065,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022834",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10554737,
+                            "participants": [
+                                {
+                                    "id": 10068110,
+                                    "gamerTag": "Saftblandarn"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022835",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10538477,
+                            "participants": [
+                                {
+                                    "id": 10053295,
+                                    "gamerTag": "Nobody"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 8,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022771,
+                "round": 2,
+                "displayScore": "Pipsqueak 3 - Poppmaister6000 0",
+                "winnerId": 10529488,
+                "identifier": "I",
+                "wPlacement": 5,
+                "completedAt": 1663492291,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022763",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10529488,
+                            "participants": [
+                                {
+                                    "id": 10045134,
+                                    "gamerTag": "Pipsqueak"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022764",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 11069081,
+                            "participants": [
+                                {
+                                    "id": 10528859,
+                                    "gamerTag": "Poppmaister6000"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 7,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022772,
+                "round": 2,
+                "displayScore": "TheLabMaster 0 - Daydee 3",
+                "winnerId": 10745280,
+                "identifier": "J",
+                "wPlacement": 5,
+                "completedAt": 1663492926,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022765",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10630821,
+                            "participants": [
+                                {
+                                    "id": 10136600,
+                                    "gamerTag": "TheLabMaster"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 20,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                },
+                                {
+                                    "seedNum": 4,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022766",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10745280,
+                            "participants": [
+                                {
+                                    "id": 10240392,
+                                    "gamerTag": "Daydee"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022773,
+                "round": 2,
+                "displayScore": "ISTE | Kongen p\u00e5 havet 3 - DC | Tellman 2",
+                "winnerId": 10536526,
+                "identifier": "K",
+                "wPlacement": 5,
+                "completedAt": 1663491582,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022767",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10536526,
+                            "participants": [
+                                {
+                                    "id": 10051535,
+                                    "gamerTag": "Kongen p\u00e5 havet"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 2,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022768",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10916478,
+                            "participants": [
+                                {
+                                    "id": 10395070,
+                                    "gamerTag": "Tellman"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 7,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022774,
+                "round": 2,
+                "displayScore": "BigM 1 - Savestate 3",
+                "winnerId": 10576908,
+                "identifier": "L",
+                "wPlacement": 5,
+                "completedAt": 1663489833,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022769",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10712342,
+                            "participants": [
+                                {
+                                    "id": 10210837,
+                                    "gamerTag": "BigM"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 18,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022770",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10576908,
+                            "participants": [
+                                {
+                                    "id": 10088815,
+                                    "gamerTag": "Savestate"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022832,
+                "round": -6,
+                "displayScore": "TheLabMaster 3 - Pria 0",
+                "winnerId": 10630821,
+                "identifier": "AL",
+                "wPlacement": 7,
+                "completedAt": 1663493690,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022772",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10630821,
+                            "participants": [
+                                {
+                                    "id": 10136600,
+                                    "gamerTag": "TheLabMaster"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 20,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                },
+                                {
+                                    "seedNum": 4,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022828",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10911992,
+                            "participants": [
+                                {
+                                    "id": 10390887,
+                                    "gamerTag": "Pria"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 17,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022833,
+                "round": -6,
+                "displayScore": "Poppmaister6000 3 - Fight Milk | Zedy 1",
+                "winnerId": 11069081,
+                "identifier": "AM",
+                "wPlacement": 7,
+                "completedAt": 1663495181,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022771",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 11069081,
+                            "participants": [
+                                {
+                                    "id": 10528859,
+                                    "gamerTag": "Poppmaister6000"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 7,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022829",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 11069115,
+                            "participants": [
+                                {
+                                    "id": 10528889,
+                                    "gamerTag": "Zedy"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 16,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022834,
+                "round": -6,
+                "displayScore": "BigM 2 - Saftblandarn 3",
+                "winnerId": 10554737,
+                "identifier": "AN",
+                "wPlacement": 7,
+                "completedAt": 1663494074,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022774",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10712342,
+                            "participants": [
+                                {
+                                    "id": 10210837,
+                                    "gamerTag": "BigM"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 18,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022830",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10554737,
+                            "participants": [
+                                {
+                                    "id": 10068110,
+                                    "gamerTag": "Saftblandarn"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022835,
+                "round": -6,
+                "displayScore": "DC | Tellman 2 - Nobody 3",
+                "winnerId": 10538477,
+                "identifier": "AO",
+                "wPlacement": 7,
+                "completedAt": 1663493308,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022773",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10916478,
+                            "participants": [
+                                {
+                                    "id": 10395070,
+                                    "gamerTag": "Tellman"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 7,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022831",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10538477,
+                            "participants": [
+                                {
+                                    "id": 10053295,
+                                    "gamerTag": "Nobody"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 8,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022828,
+                "round": -5,
+                "displayScore": "RedLime 1 - Pria 3",
+                "winnerId": 10911992,
+                "identifier": "AH",
+                "wPlacement": 9,
+                "completedAt": 1663491173,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022820",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10554773,
+                            "participants": [
+                                {
+                                    "id": 10068143,
+                                    "gamerTag": "RedLime"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 25,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 12,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022821",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10911992,
+                            "participants": [
+                                {
+                                    "id": 10390887,
+                                    "gamerTag": "Pria"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 17,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022829,
+                "round": -5,
+                "displayScore": "SN | Martin 0 - Fight Milk | Zedy 3",
+                "winnerId": 11069115,
+                "identifier": "AI",
+                "wPlacement": 9,
+                "completedAt": 1663491549,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022822",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10747410,
+                            "participants": [
+                                {
+                                    "id": 10242292,
+                                    "gamerTag": "Martin"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 12,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022823",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 11069115,
+                            "participants": [
+                                {
+                                    "id": 10528889,
+                                    "gamerTag": "Zedy"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 16,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022830,
+                "round": -5,
+                "displayScore": "Saftblandarn 3 - Peanutz996 0",
+                "winnerId": 10554737,
+                "identifier": "AJ",
+                "wPlacement": 9,
+                "completedAt": 1663492368,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022824",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10554737,
+                            "participants": [
+                                {
+                                    "id": 10068110,
+                                    "gamerTag": "Saftblandarn"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022825",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10678439,
+                            "participants": [
+                                {
+                                    "id": 10179119,
+                                    "gamerTag": "Peanutz996"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 14,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 14,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022831,
+                "round": -5,
+                "displayScore": "Nobody 3 - Aellgi 1",
+                "winnerId": 10538477,
+                "identifier": "AK",
+                "wPlacement": 9,
+                "completedAt": 1663491712,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022826",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10538477,
+                            "participants": [
+                                {
+                                    "id": 10053295,
+                                    "gamerTag": "Nobody"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 8,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022827",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10544007,
+                            "participants": [
+                                {
+                                    "id": 10058361,
+                                    "gamerTag": "Aellgi"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 15,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 15,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022763,
+                "round": 1,
+                "displayScore": "Pipsqueak 3 - Aellgi 0",
+                "winnerId": 10529488,
+                "identifier": "A",
+                "wPlacement": 9,
+                "completedAt": 1663489578,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "21389618",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10529488,
+                            "participants": [
+                                {
+                                    "id": 10045134,
+                                    "gamerTag": "Pipsqueak"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389627",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10544007,
+                            "participants": [
+                                {
+                                    "id": 10058361,
+                                    "gamerTag": "Aellgi"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 15,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 15,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022764,
+                "round": 1,
+                "displayScore": "Nobody 0 - Poppmaister6000 3",
+                "winnerId": 11069081,
+                "identifier": "B",
+                "wPlacement": 9,
+                "completedAt": 1663489057,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "21389625",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10538477,
+                            "participants": [
+                                {
+                                    "id": 10053295,
+                                    "gamerTag": "Nobody"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 8,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389632",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 11069081,
+                            "participants": [
+                                {
+                                    "id": 10528859,
+                                    "gamerTag": "Poppmaister6000"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 7,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022765,
+                "round": 1,
+                "displayScore": "TheLabMaster 3 - Peanutz996 2",
+                "winnerId": 10630821,
+                "identifier": "C",
+                "wPlacement": 9,
+                "completedAt": 1663490299,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "21389621",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10630821,
+                            "participants": [
+                                {
+                                    "id": 10136600,
+                                    "gamerTag": "TheLabMaster"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 20,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                },
+                                {
+                                    "seedNum": 4,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389628",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10678439,
+                            "participants": [
+                                {
+                                    "id": 10179119,
+                                    "gamerTag": "Peanutz996"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 14,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 14,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022766,
+                "round": 1,
+                "displayScore": "Daydee 3 - Saftblandarn 0",
+                "winnerId": 10745280,
+                "identifier": "D",
+                "wPlacement": 9,
+                "completedAt": 1663489288,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "21389622",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10745280,
+                            "participants": [
+                                {
+                                    "id": 10240392,
+                                    "gamerTag": "Daydee"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389631",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10554737,
+                            "participants": [
+                                {
+                                    "id": 10068110,
+                                    "gamerTag": "Saftblandarn"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022767,
+                "round": 1,
+                "displayScore": "ISTE | Kongen p\u00e5 havet 3 - Fight Milk | Zedy 2",
+                "winnerId": 10536526,
+                "identifier": "E",
+                "wPlacement": 9,
+                "completedAt": 1663489736,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "21389620",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10536526,
+                            "participants": [
+                                {
+                                    "id": 10051535,
+                                    "gamerTag": "Kongen p\u00e5 havet"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 2,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389629",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 11069115,
+                            "participants": [
+                                {
+                                    "id": 10528889,
+                                    "gamerTag": "Zedy"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 16,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022768,
+                "round": 1,
+                "displayScore": "DC | Tellman 3 - SN | Martin 1",
+                "winnerId": 10916478,
+                "identifier": "F",
+                "wPlacement": 9,
+                "completedAt": 1663489299,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "21389623",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10916478,
+                            "participants": [
+                                {
+                                    "id": 10395070,
+                                    "gamerTag": "Tellman"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 7,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389630",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10747410,
+                            "participants": [
+                                {
+                                    "id": 10242292,
+                                    "gamerTag": "Martin"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 12,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022769,
+                "round": 1,
+                "displayScore": "BigM 3 - Pria 0",
+                "winnerId": 10712342,
+                "identifier": "G",
+                "wPlacement": 9,
+                "completedAt": 1663489028,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "21389619",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10712342,
+                            "participants": [
+                                {
+                                    "id": 10210837,
+                                    "gamerTag": "BigM"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 18,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389626",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10911992,
+                            "participants": [
+                                {
+                                    "id": 10390887,
+                                    "gamerTag": "Pria"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 17,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022770,
+                "round": 1,
+                "displayScore": "Savestate 3 - RedLime 0",
+                "winnerId": 10576908,
+                "identifier": "H",
+                "wPlacement": 9,
+                "completedAt": 1663488840,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "21389624",
+                        "prereqType": "seed",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10576908,
+                            "participants": [
+                                {
+                                    "id": 10088815,
+                                    "gamerTag": "Savestate"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "21389633",
+                        "prereqType": "seed",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10554773,
+                            "participants": [
+                                {
+                                    "id": 10068143,
+                                    "gamerTag": "RedLime"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 25,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 12,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022821,
+                "round": -4,
+                "displayScore": "Pria 3 - Grothagt 0",
+                "winnerId": 10911992,
+                "identifier": "AA",
+                "wPlacement": 13,
+                "completedAt": 1663490409,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022769",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10911992,
+                            "participants": [
+                                {
+                                    "id": 10390887,
+                                    "gamerTag": "Pria"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 17,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022813",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10785998,
+                            "participants": [
+                                {
+                                    "id": 10277466,
+                                    "gamerTag": "Grothagt"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 31,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 26,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022822,
+                "round": -4,
+                "displayScore": "SN | Martin 3 - MM720 0",
+                "winnerId": 10747410,
+                "identifier": "AB",
+                "wPlacement": 13,
+                "completedAt": 1663490905,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022768",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10747410,
+                            "participants": [
+                                {
+                                    "id": 10242292,
+                                    "gamerTag": "Martin"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 12,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022814",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10555558,
+                            "participants": [
+                                {
+                                    "id": 10068827,
+                                    "gamerTag": "MM720"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 22,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 30,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022823,
+                "round": -4,
+                "displayScore": "Fight Milk | Zedy 3 - Netonixen 0",
+                "winnerId": 11069115,
+                "identifier": "AC",
+                "wPlacement": 13,
+                "completedAt": 1663490145,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022767",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 11069115,
+                            "participants": [
+                                {
+                                    "id": 10528889,
+                                    "gamerTag": "Zedy"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 16,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                },
+                                {
+                                    "seedNum": 13,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022815",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10537482,
+                            "participants": [
+                                {
+                                    "id": 10052381,
+                                    "gamerTag": "Netonixen"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 19,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 27,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022824,
+                "round": -4,
+                "displayScore": "Saftblandarn 3 - spaisi 0",
+                "winnerId": 10554737,
+                "identifier": "AD",
+                "wPlacement": 13,
+                "completedAt": 1663489976,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022766",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10554737,
+                            "participants": [
+                                {
+                                    "id": 10068110,
+                                    "gamerTag": "Saftblandarn"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 11,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022816",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10786014,
+                            "participants": [
+                                {
+                                    "id": 10277480,
+                                    "gamerTag": "spaisi"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 24,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 32,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022825,
+                "round": -4,
+                "displayScore": "Peanutz996 3 - Muren 0",
+                "winnerId": 10678439,
+                "identifier": "AE",
+                "wPlacement": 13,
+                "completedAt": 1663491638,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022765",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10678439,
+                            "participants": [
+                                {
+                                    "id": 10179119,
+                                    "gamerTag": "Peanutz996"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 14,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 14,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022817",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10903705,
+                            "participants": [
+                                {
+                                    "id": 10383094,
+                                    "gamerTag": "Muren"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 16,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 25,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022826,
+                "round": -4,
+                "displayScore": "Nobody 3 - gongong 0",
+                "winnerId": 10538477,
+                "identifier": "AF",
+                "wPlacement": 13,
+                "completedAt": 1663490608,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022764",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10538477,
+                            "participants": [
+                                {
+                                    "id": 10053295,
+                                    "gamerTag": "Nobody"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 9,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 8,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022818",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10688674,
+                            "participants": [
+                                {
+                                    "id": 10070534,
+                                    "gamerTag": "gongong"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 21,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 29,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022827,
+                "round": -4,
+                "displayScore": "Aellgi 3 - +HOPE+ 0",
+                "winnerId": 10544007,
+                "identifier": "AG",
+                "wPlacement": 13,
+                "completedAt": 1663490344,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022763",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10544007,
+                            "participants": [
+                                {
+                                    "id": 10058361,
+                                    "gamerTag": "Aellgi"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 15,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 15,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022819",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10103181,
+                            "participants": [
+                                {
+                                    "id": 9661868,
+                                    "gamerTag": "+HOPE+"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 35,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 22,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022820,
+                "round": -4,
+                "displayScore": "RedLime 3 - Nano 0",
+                "winnerId": 10554773,
+                "identifier": "Z",
+                "wPlacement": 13,
+                "completedAt": 1663490415,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022770",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10554773,
+                            "participants": [
+                                {
+                                    "id": 10068143,
+                                    "gamerTag": "RedLime"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 25,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 12,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022812",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10984716,
+                            "participants": [
+                                {
+                                    "id": 10455337,
+                                    "gamerTag": "Nano"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 23,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 31,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022812,
+                "round": -3,
+                "displayScore": "Nano 3 - MZP | Kuzuha 0",
+                "winnerId": 10984716,
+                "identifier": "R",
+                "wPlacement": 17,
+                "completedAt": 1663489771,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022796",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10984716,
+                            "participants": [
+                                {
+                                    "id": 10455337,
+                                    "gamerTag": "Nano"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 23,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 31,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022797",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10536511,
+                            "participants": [
+                                {
+                                    "id": 10051523,
+                                    "gamerTag": "Kuzuha"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 40,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 17,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022813,
+                "round": -3,
+                "displayScore": "Grothagt 3 - Hixon 2",
+                "winnerId": 10785998,
+                "identifier": "S",
+                "wPlacement": 17,
+                "completedAt": 1663489652,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022798",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10785998,
+                            "participants": [
+                                {
+                                    "id": 10277466,
+                                    "gamerTag": "Grothagt"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 31,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 26,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022799",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10930462,
+                            "participants": [
+                                {
+                                    "id": 10407948,
+                                    "gamerTag": "Hixon"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 32,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 24,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022814,
+                "round": -3,
+                "displayScore": "MM720 3 - deff 0",
+                "winnerId": 10555558,
+                "identifier": "T",
+                "wPlacement": 17,
+                "completedAt": 1663490081,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022800",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10555558,
+                            "participants": [
+                                {
+                                    "id": 10068827,
+                                    "gamerTag": "MM720"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 22,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 30,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022801",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10544031,
+                            "participants": [
+                                {
+                                    "id": 10058383,
+                                    "gamerTag": "deff"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 37,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 20,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022815,
+                "round": -3,
+                "displayScore": "Netonixen 3 - granis 0",
+                "winnerId": 10537482,
+                "identifier": "U",
+                "wPlacement": 17,
+                "completedAt": 1663489533,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022802",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10537482,
+                            "participants": [
+                                {
+                                    "id": 10052381,
+                                    "gamerTag": "Netonixen"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 19,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 27,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022803",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10905095,
+                            "participants": [
+                                {
+                                    "id": 10384364,
+                                    "gamerTag": "granis"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 36,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                },
+                                {
+                                    "seedNum": 21,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022816,
+                "round": -3,
+                "displayScore": "spaisi 3 - Mac 0",
+                "winnerId": 10786014,
+                "identifier": "V",
+                "wPlacement": 17,
+                "completedAt": 1663488994,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022804",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10786014,
+                            "participants": [
+                                {
+                                    "id": 10277480,
+                                    "gamerTag": "spaisi"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 24,
+                                    "phaseGroup": {
+                                        "id": 1844343
+                                    }
+                                },
+                                {
+                                    "seedNum": 32,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022805",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10895550,
+                            "participants": [
+                                {
+                                    "id": 10376005,
+                                    "gamerTag": "Mac"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 39,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 18,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022817,
+                "round": -3,
+                "displayScore": "Muren 3 - Tailz 0",
+                "winnerId": 10903705,
+                "identifier": "W",
+                "wPlacement": 17,
+                "completedAt": 1663488976,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022806",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10903705,
+                            "participants": [
+                                {
+                                    "id": 10383094,
+                                    "gamerTag": "Muren"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 16,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 25,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022807",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10554147,
+                            "participants": [
+                                {
+                                    "id": 10067558,
+                                    "gamerTag": "Tailz"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 34,
+                                    "phaseGroup": {
+                                        "id": 1844337
+                                    }
+                                },
+                                {
+                                    "seedNum": 23,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 0
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022818,
+                "round": -3,
+                "displayScore": "gongong 3 - Alfred Bj\u00f6rre 2",
+                "winnerId": 10688674,
+                "identifier": "X",
+                "wPlacement": 17,
+                "completedAt": 1663489611,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022808",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10688674,
+                            "participants": [
+                                {
+                                    "id": 10070534,
+                                    "gamerTag": "gongong"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 21,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 29,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022809",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10577708,
+                            "participants": [
+                                {
+                                    "id": 10089469,
+                                    "gamerTag": "Alfred Bj\u00f6rre"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 27,
+                                    "phaseGroup": {
+                                        "id": 1844341
+                                    }
+                                },
+                                {
+                                    "seedNum": 19,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022819,
+                "round": -3,
+                "displayScore": "PXB | Teroz 1 - +HOPE+ 3",
+                "winnerId": 10103181,
+                "identifier": "Y",
+                "wPlacement": 17,
+                "completedAt": 1663489699,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022810",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10816744,
+                            "participants": [
+                                {
+                                    "id": 10305559,
+                                    "gamerTag": "Teroz"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 29,
+                                    "phaseGroup": {
+                                        "id": 1844339
+                                    }
+                                },
+                                {
+                                    "seedNum": 28,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022811",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10103181,
+                            "participants": [
+                                {
+                                    "id": 9661868,
+                                    "gamerTag": "+HOPE+"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 35,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 22,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022840,
+                "round": -9,
+                "displayScore": null,
+                "winnerId": null,
+                "identifier": "AT",
+                "wPlacement": 3,
+                "completedAt": null,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022838",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10576908,
+                            "participants": [
+                                {
+                                    "id": 10088815,
+                                    "gamerTag": "Savestate"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 10,
+                                    "phaseGroup": {
+                                        "id": 1844342
+                                    }
+                                },
+                                {
+                                    "seedNum": 6,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": null
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022839",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": {
+                            "id": 10745280,
+                            "participants": [
+                                {
+                                    "id": 10240392,
+                                    "gamerTag": "Daydee"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844340
+                                    }
+                                },
+                                {
+                                    "seedNum": 5,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": null
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 52022841,
+                "round": -10,
+                "displayScore": null,
+                "winnerId": null,
+                "identifier": "AU",
+                "wPlacement": 2,
+                "completedAt": null,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022777",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10536526,
+                            "participants": [
+                                {
+                                    "id": 10051535,
+                                    "gamerTag": "Kongen p\u00e5 havet"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 3,
+                                    "phaseGroup": {
+                                        "id": 1844338
+                                    }
+                                },
+                                {
+                                    "seedNum": 2,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": null
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022840",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": null,
+                        "standing": null
+                    }
+                ]
+            },
+            {
+                "id": 52022778,
+                "round": 5,
+                "displayScore": null,
+                "winnerId": null,
+                "identifier": "P",
+                "wPlacement": 1,
+                "completedAt": null,
+                "stream": {
+                    "streamName": "smashnorge",
+                    "streamSource": "TWITCH"
+                },
+                "slots": [
+                    {
+                        "prereqId": "52022777",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": {
+                            "id": 10529488,
+                            "participants": [
+                                {
+                                    "id": 10045134,
+                                    "gamerTag": "Pipsqueak"
+                                }
+                            ],
+                            "seeds": [
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1757001
+                                    }
+                                },
+                                {
+                                    "seedNum": 1,
+                                    "phaseGroup": {
+                                        "id": 1844344
+                                    }
+                                }
+                            ]
+                        },
+                        "standing": {
+                            "stats": {
+                                "score": {
+                                    "value": null
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "prereqId": "52022841",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": null,
+                        "standing": null
+                    }
+                ]
+            },
+            {
+                "id": 52022779,
+                "round": 5,
+                "displayScore": null,
+                "winnerId": null,
+                "identifier": "Q",
+                "wPlacement": 1,
+                "completedAt": null,
+                "stream": null,
+                "slots": [
+                    {
+                        "prereqId": "52022778",
+                        "prereqType": "set",
+                        "slotIndex": 0,
+                        "entrant": null,
+                        "standing": null
+                    },
+                    {
+                        "prereqId": "52022778",
+                        "prereqType": "set",
+                        "slotIndex": 1,
+                        "entrant": null,
+                        "standing": null
+                    }
+                ]
+            }
+        ]
+    }
+}
